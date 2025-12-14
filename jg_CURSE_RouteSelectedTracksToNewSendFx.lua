@@ -1,9 +1,9 @@
--- jg_CURSE_AddSendFxToSelectedTracks.lua
+-- jg_CURSE_RouteSelectedTracksToNewSendFx.lua
 -- CURSE (Collection of Useful Reaper Scripts and Enhancements)
 -- Author: jg
 -- Version: 0.1
 -- Description:
---   Creates a new FX bus track and routes all currently selected tracks to it via sends.
+--   Creates a new FX "bus" track and routes all currently selected tracks to it.
 --   - Prompts for FX track name
 --   - Prompts for placement: after last selected track OR at end of project
 --   - Prompts whether to prefix name with "FX" (checkbox, default ON)
@@ -19,6 +19,9 @@
 --
 -- Safety:
 --   Script checks for selection and cancels with messages if nothing is selected or user cancels.
+--
+-- To Do:
+--   - Better UI via ReaImGui
 
 local r = reaper
 
