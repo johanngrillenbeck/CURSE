@@ -72,6 +72,7 @@ local function main()
 
   H.set_track_name(busTrack, finalName)
   H.set_track_channels(busTrack, maxCh)
+  H.apply_default_color(busTrack, "Bus")
 
   for i = 1, #sel do
     local t = sel[i]

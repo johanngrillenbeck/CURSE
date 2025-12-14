@@ -115,4 +115,41 @@ function H.create_multichannel_sends(src, dst, numChannels)
   end
 end
 
+-- Config loading and color helpers
+function H.load_config()
+  local info = debug.getinfo(1, 'S')
+  local helper_path = info.source:match("^@(.+)$") or ""
+  local dir = helper_path:match("^(.*)[/\\]") or ""
+  local cfg_path = dir .. "/jg_CURSE_Config.lua"
+  local ok, cfg = pcall(dofile, cfg_path)
+  if ok and type(cfg) == "table" then return cfg end
+  return { colors = { FX = "faf06b", Bus = "906bfa" } }
+end
+
+local function hex_to_rgb(hex)
+  if not hex then return nil end
+  local s = tostring(hex):gsub("#", "")
+  if #s ~= 6 then return nil end
+  local r_ = tonumber(s:sub(1,2), 16)
+  local g_ = tonumber(s:sub(3,4), 16)
+  local b_ = tonumber(s:sub(5,6), 16)
+  if not (r_ and g_ and b_) then return nil end
+  return r_, g_, b_
+end
+
+function H.set_track_color_hex(track, hex)
+  local r_, g_, b_ = hex_to_rgb(hex)
+  if not r_ then return false end
+  local native = r.ColorToNative(r_, g_, b_)
+  -- Mark as custom color with 0x1000000 flag
+  r.SetTrackColor(track, native | 0x1000000)
+  return true
+end
+
+function H.apply_default_color(track, kind)
+  local cfg = H.load_config()
+  local hex = cfg and cfg.colors and cfg.colors[kind]
+  if hex then H.set_track_color_hex(track, hex) end
+end
+
 return H

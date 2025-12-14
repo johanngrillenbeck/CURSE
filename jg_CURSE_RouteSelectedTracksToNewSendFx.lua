@@ -25,144 +25,64 @@
 
 local r = reaper
 
--- Utility: show error message
-local function msg(text)
-  r.ShowMessageBox(text, "jg_CURSE_AddSendFxToSelectedTracks", 0)
+-- Load helper from the same directory
+local function load_helper()
+  local info = debug.getinfo(1, 'S')
+  local script_path = info.source:match("^@(.+)$") or ""
+  local dir = script_path:match("^(.*)[/\\]") or ""
+  local helper_path = dir .. "/jg_CURSE_Helper.lua"
+  local ok, H = pcall(dofile, helper_path)
+  if ok and type(H) == "table" then return H end
+  reaper.ShowMessageBox("Failed to load helper at: " .. helper_path, "jg_CURSE", 0)
+  return nil
 end
 
--- Get selected tracks
-local function get_selected_tracks()
-  local tracks = {}
-  local cnt = r.CountSelectedTracks(0)
-  for i = 0, cnt-1 do
-    tracks[#tracks+1] = r.GetSelectedTrack(0, i)
-  end
-  return tracks
-end
-
--- Determine maximum channel count among given tracks
-local function get_max_channels(tracks)
-  local maxch = 2
-  for i = 1, #tracks do
-    local ch = r.GetMediaTrackInfo_Value(tracks[i], "I_NCHAN")
-    if ch and ch > maxch then maxch = math.floor(ch) end
-  end
-  return maxch
-end
-
--- Prompt helpers
-local function prompt_fx_name(default)
-  local ok, ret = r.GetUserInputs("FX Track Name", 1, "Enter FX track name:", default or "")
-  if not ok or ret == "" then return nil end
-  return ret
-end
-
-local function prompt_placement()
-  -- 1: After last selected track, 2: End of project
-  local ok, ret = r.GetUserInputs("Placement", 1, "1=After last selected, 2=End:", "1")
-  if not ok then return nil end
-  ret = tonumber(ret)
-  if ret ~= 1 and ret ~= 2 then return nil end
-  return ret
-end
-
-local function prompt_prefix(defaultChecked)
-  -- checkbox via GetUserInputs: we simulate with 0/1 entry
-  local default = defaultChecked and "1" or "0"
-  local ok, ret = r.GetUserInputs("Use 'FX' Prefix?", 1, "Check=1, Uncheck=0:", default)
-  if not ok then return nil end
-  if ret ~= "0" and ret ~= "1" then return nil end
-  return ret == "1"
-end
-
--- Find insertion index based on placement choice
-local function get_insert_index(tracks, placementChoice)
-  local total = r.CountTracks(0)
-  if placementChoice == 2 then
-    return total -- insert at end
-  end
-  -- After last selected track
-  if #tracks == 0 then
-    return total -- fallback to end
-  end
-  local lastIdx = -1
-  for i = 1, #tracks do
-    local idx = r.GetMediaTrackInfo_Value(tracks[i], "IP_TRACKNUMBER") -- 1-based
-    if idx and idx > lastIdx then lastIdx = math.floor(idx) end
-  end
-  -- Insert after last selected: Reaper insert index is 0-based
-  return math.max(0, lastIdx)
-end
-
--- Create a new track at index and return it
-local function create_track_at(index)
-  r.InsertTrackAtIndex(index, true)
-  r.TrackList_AdjustWindows(false)
-  return r.GetTrack(0, index)
-end
-
--- Set track name
-local function set_track_name(track, name)
-  r.GetSetMediaTrackInfo_String(track, "P_NAME", name, true)
-end
-
--- Set track channel count
-local function set_track_channels(track, nchan)
-  r.SetMediaTrackInfo_Value(track, "I_NCHAN", nchan)
-end
-
--- Create send from src to dst, sending all channels
-local function create_send_all_channels(src, dst)
-  local sendIdx = r.CreateTrackSend(src, dst)
-  if sendIdx >= 0 then
-    -- Make sure it uses all source channels (-1) and maps to destination starting at 0
-    r.SetTrackSendInfo_Value(src, 0, sendIdx, "I_SRCCHAN", -1)
-    r.SetTrackSendInfo_Value(src, 0, sendIdx, "I_DSTCHAN", 0)
-    -- Optional: set send volume to 0 dB
-    r.SetTrackSendInfo_Value(src, 0, sendIdx, "D_VOL", 1.0)
-  end
-end
+local H = load_helper()
+if not H then return end
 
 -- Main
 local function main()
-  local sel = get_selected_tracks()
+  local sel = H.get_selected_tracks()
   if #sel == 0 then
-    msg("No tracks selected.")
+    H.msg("jg_CURSE_RouteSelectedTracksToNewSendFx", "No tracks selected.")
     return
   end
 
   -- Prompts
-  local fxName = prompt_fx_name("")
+  local fxName = H.prompt_name("FX Track Name", "Enter FX track name:", "")
   if not fxName then return end
-  local placement = prompt_placement()
+  local placement = H.prompt_placement(1)
   if not placement then return end
-  local usePrefix = prompt_prefix(true)
+  local usePrefix = H.prompt_prefix("Use 'FX' Prefix?", "Check=1, Uncheck=0:", true)
   if usePrefix == nil then return end
 
   local finalName = usePrefix and ("FX " .. fxName) or fxName
 
   -- Determine max channels
-  local maxCh = get_max_channels(sel)
+  local maxCh = H.get_max_channels(sel)
 
   -- Insert track
   r.Undo_BeginBlock()
   r.PreventUIRefresh(1)
 
-  local insertIndex = get_insert_index(sel, placement)
-  local fxTrack = create_track_at(insertIndex)
+  local insertIndex = H.get_insert_index(sel, placement)
+  local fxTrack = H.create_track_at(insertIndex)
   if not fxTrack then
     r.PreventUIRefresh(-1)
     r.Undo_EndBlock("CURSE: Add FX bus and route", -1)
-    msg("Failed to create track.")
+    H.msg("jg_CURSE_RouteSelectedTracksToNewSendFx", "Failed to create track.")
     return
   end
 
-  set_track_name(fxTrack, finalName)
-  set_track_channels(fxTrack, maxCh)
+  H.set_track_name(fxTrack, finalName)
+  H.set_track_channels(fxTrack, maxCh)
+  H.apply_default_color(fxTrack, "FX")
 
   -- Route selected tracks to FX track
   for i = 1, #sel do
-    create_send_all_channels(sel[i], fxTrack)
+    local t = sel[i]
+    local ch = reaper.GetMediaTrackInfo_Value(t, "I_NCHAN")
+    H.create_multichannel_sends(t, fxTrack, math.floor(ch or 2))
   end
 
   r.PreventUIRefresh(-1)
