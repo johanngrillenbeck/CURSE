@@ -26,130 +26,58 @@
 
 local r = reaper
 
-local function msg(text)
-  r.ShowMessageBox(text, "jg_CURSE_RouteSelectedTracksToNewBus", 0)
+-- Load helper from the same directory as this script
+local function load_helper()
+  local info = debug.getinfo(1, 'S')
+  local script_path = info.source:match("^@(.+)$") or ""
+  local dir = script_path:match("^(.*)[/\\]") or ""
+  local helper_path = dir .. "/jg_CURSE_Helper.lua"
+  local ok, H = pcall(dofile, helper_path)
+  if ok and type(H) == "table" then return H end
+  reaper.ShowMessageBox("Failed to load helper at: " .. helper_path, "jg_CURSE", 0)
+  return nil
 end
 
-local function get_selected_tracks()
-  local tracks = {}
-  local cnt = r.CountSelectedTracks(0)
-  for i = 0, cnt-1 do
-    tracks[#tracks+1] = r.GetSelectedTrack(0, i)
-  end
-  return tracks
-end
-
-local function get_max_channels(tracks)
-  local maxch = 2
-  for i = 1, #tracks do
-    local ch = r.GetMediaTrackInfo_Value(tracks[i], "I_NCHAN")
-    if ch and ch > maxch then maxch = math.floor(ch) end
-  end
-  return maxch
-end
-
-local function prompt_bus_name(default)
-  local ok, ret = r.GetUserInputs("Bus Track Name", 1, "Enter Bus track name:", default or "")
-  if not ok or ret == "" then return nil end
-  return ret
-end
-
-local function prompt_placement()
-  local ok, ret = r.GetUserInputs("Placement", 1, "1=After last selected, 2=End:", "1")
-  if not ok then return nil end
-  ret = tonumber(ret)
-  if ret ~= 1 and ret ~= 2 then return nil end
-  return ret
-end
-
-local function prompt_prefix(defaultChecked)
-  local default = defaultChecked and "1" or "0"
-  local ok, ret = r.GetUserInputs("Use 'B' Prefix?", 1, "Check=1, Uncheck=0:", default)
-  if not ok then return nil end
-  if ret ~= "0" and ret ~= "1" then return nil end
-  return ret == "1"
-end
-
-local function get_insert_index(tracks, placementChoice)
-  local total = r.CountTracks(0)
-  if placementChoice == 2 then
-    return total
-  end
-  if #tracks == 0 then
-    return total
-  end
-  local lastIdx = -1
-  for i = 1, #tracks do
-    local idx = r.GetMediaTrackInfo_Value(tracks[i], "IP_TRACKNUMBER")
-    if idx and idx > lastIdx then lastIdx = math.floor(idx) end
-  end
-  return math.max(0, lastIdx)
-end
-
-local function create_track_at(index)
-  r.InsertTrackAtIndex(index, true)
-  r.TrackList_AdjustWindows(false)
-  return r.GetTrack(0, index)
-end
-
-local function set_track_name(track, name)
-  r.GetSetMediaTrackInfo_String(track, "P_NAME", name, true)
-end
-
-local function set_track_channels(track, nchan)
-  r.SetMediaTrackInfo_Value(track, "I_NCHAN", nchan)
-end
-
-local function create_send_all_channels(src, dst)
-  local sendIdx = r.CreateTrackSend(src, dst)
-  if sendIdx >= 0 then
-    r.SetTrackSendInfo_Value(src, 0, sendIdx, "I_SRCCHAN", -1)
-    r.SetTrackSendInfo_Value(src, 0, sendIdx, "I_DSTCHAN", 0)
-    r.SetTrackSendInfo_Value(src, 0, sendIdx, "D_VOL", 1.0)
-  end
-end
-
-local function disable_master_send(track)
-  -- B_MAINSEND: 1.0 = enabled, 0.0 = disabled
-  r.SetMediaTrackInfo_Value(track, "B_MAINSEND", 0)
-end
+local H = load_helper()
+if not H then return end
 
 local function main()
-  local sel = get_selected_tracks()
+  local sel = H.get_selected_tracks()
   if #sel == 0 then
-    msg("No tracks selected.")
+    H.msg("jg_CURSE_RouteSelectedTracksToNewBus", "No tracks selected.")
     return
   end
 
-  local busName = prompt_bus_name("")
+  local busName = H.prompt_name("Bus Track Name", "Enter Bus track name:", "")
   if not busName then return end
-  local placement = prompt_placement()
+  local placement = H.prompt_placement(1)
   if not placement then return end
-  local usePrefix = prompt_prefix(true)
+  local usePrefix = H.prompt_prefix("Use 'B' Prefix?", "Check=1, Uncheck=0:", true)
   if usePrefix == nil then return end
 
   local finalName = usePrefix and ("B " .. busName) or busName
-  local maxCh = get_max_channels(sel)
+  local maxCh = H.get_max_channels(sel)
 
   r.Undo_BeginBlock()
   r.PreventUIRefresh(1)
 
-  local insertIndex = get_insert_index(sel, placement)
-  local busTrack = create_track_at(insertIndex)
+  local insertIndex = H.get_insert_index(sel, placement)
+  local busTrack = H.create_track_at(insertIndex)
   if not busTrack then
     r.PreventUIRefresh(-1)
     r.Undo_EndBlock("CURSE: Route to new Bus", -1)
-    msg("Failed to create track.")
+    H.msg("jg_CURSE_RouteSelectedTracksToNewBus", "Failed to create track.")
     return
   end
 
-  set_track_name(busTrack, finalName)
-  set_track_channels(busTrack, maxCh)
+  H.set_track_name(busTrack, finalName)
+  H.set_track_channels(busTrack, maxCh)
 
   for i = 1, #sel do
     local t = sel[i]
-    create_send_all_channels(t, busTrack)
-    disable_master_send(t)
+    local ch = reaper.GetMediaTrackInfo_Value(t, "I_NCHAN")
+    H.create_multichannel_sends(t, busTrack, math.floor(ch or 2))
+    H.disable_master_send(t)
   end
 
   r.PreventUIRefresh(-1)
