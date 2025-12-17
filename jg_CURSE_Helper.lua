@@ -152,4 +152,70 @@ function H.apply_default_color(track, kind)
   if hex then H.set_track_color_hex(track, hex) end
 end
 
+-- Find a track by exact name (case-sensitive)
+function H.find_track_by_exact_name(name)
+  local trackCount = reaper.GetNumTracks()
+  for i = 0, trackCount - 1 do
+    local track = reaper.GetTrack(0, i)
+    local _, tname = reaper.GetTrackName(track)
+    if tname == name then
+      return track
+    end
+  end
+  return nil
+end
+
+-- Find the first FX index (normal or input/rec FX) whose name contains nameSubstr
+-- Returns -1 if not found. The returned index is suitable for TrackFX_* APIs.
+function H.find_midi_tool_fx_index(track, nameSubstr)
+  if not track then return -1 end
+
+  local fxCount = reaper.TrackFX_GetCount(track)
+  for i = 0, fxCount - 1 do
+    local _, fxName = reaper.TrackFX_GetFXName(track, i, "")
+    if fxName and fxName:find(nameSubstr, 1, true) then
+      return i
+    end
+  end
+
+  local recCount = reaper.TrackFX_GetRecCount(track)
+  for i = 0, recCount - 1 do
+    local idx = 0x1000000 + i
+    local _, fxName = reaper.TrackFX_GetFXName(track, idx, "")
+    if fxName and fxName:find(nameSubstr, 1, true) then
+      return idx
+    end
+  end
+
+  return -1
+end
+
+-- Find a parameter index by exact parameter name
+function H.find_fx_param_index(track, fxIdx, paramName)
+  local paramCount = reaper.TrackFX_GetNumParams(track, fxIdx)
+  for p = 0, paramCount - 1 do
+    local _, pname = reaper.TrackFX_GetParamName(track, fxIdx, p, "")
+    if pname == paramName then
+      return p
+    end
+  end
+  return -1
+end
+
+-- Set the JSFX "Output Channel" parameter for IXix MIDI Tool v2
+-- channel: 1..16
+function H.set_jsfx_output_channel(track, fxIdx, channel)
+  local steps = 16
+  local stepValue = math.max(1, math.min(steps, channel))
+  local normalized = stepValue / steps
+
+  local paramIdx = H.find_fx_param_index(track, fxIdx, "Output Channel")
+  if paramIdx < 0 then
+    return false, "'Output Channel' parameter not found in MIDI Tool v2"
+  end
+
+  reaper.TrackFX_SetParamNormalized(track, fxIdx, paramIdx, normalized)
+  return true
+end
+
 return H
