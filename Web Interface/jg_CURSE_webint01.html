@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+		<title>Reaper Tablet Grid</title>
+		<link rel="stylesheet" href="webint.css" />
+	</head>
+	<body>
+		<main class="app">
+			<h1 class="sr-only">Reaper 5x5 Action Grid</h1>
+			<div id="grid" class="grid" role="grid" aria-label="Reaper action grid">
+				<!-- 25 buttons: set the REAPER action ID for each button by replacing the string REPLACE_ME below -->
+				<!-- Use the Actions window in REAPER -> right-click -> "Copy selected action ID" to get numeric IDs -->
+				<!-- Example: onClick="wwr_req(40746)" for Main_OnCommand(40746) -->
+
+				<!-- Row 1 -->
+				<button class="grid-btn" role="gridcell" data-action="act-1" data-cmd="REPLACE_ME" onClick="wwr_req('40044')" aria-label="Action 1">1</button>
+				<button class="grid-btn" role="gridcell" data-action="act-2" data-cmd="REPLACE_ME" onClick="wwr_req('REPLACE_ME')" aria-label="Action 2">2</button>
+				<button class="grid-btn" role="gridcell" data-action="act-3" data-cmd="REPLACE_ME" onClick="wwr_req('REPLACE_ME')" aria-label="Action 3">3</button>
+				<button class="grid-btn" role="gridcell" data-action="act-4" data-cmd="REPLACE_ME" onClick="wwr_req('REPLACE_ME')" aria-label="Action 4">4</button>
+				<button class="grid-btn" role="gridcell" data-action="act-5" data-cmd="REPLACE_ME" onClick="wwr_req('REPLACE_ME')" aria-label="Action 5">5</button>
+
+				<!-- Row 2 -->
+				<button class="grid-btn" role="gridcell" data-action="act-6" data-cmd="REPLACE_ME" onClick="wwr_req('REPLACE_ME')" aria-label="Action 6">6</button>
+				<button class="grid-btn" role="gridcell" data-action="act-7" data-cmd="REPLACE_ME" onClick="wwr_req('REPLACE_ME')" aria-label="Action 7">7</button>
+				<button class="grid-btn" role="gridcell" data-action="act-8" data-cmd="REPLACE_ME" onClick="wwr_req('REPLACE_ME')" aria-label="Action 8">8</button>
+				<button class="grid-btn" role="gridcell" data-action="act-9" data-cmd="REPLACE_ME" onClick="wwr_req('REPLACE_ME')" aria-label="Action 9">9</button>
+				<button class="grid-btn" role="gridcell" data-action="act-10" data-cmd="REPLACE_ME" onClick="wwr_req('REPLACE_ME')" aria-label="Action 10">10</button>
+
+				<!-- Row 3 -->
+				<button class="grid-btn" role="gridcell" data-action="act-11" data-cmd="REPLACE_ME" onClick="wwr_req('REPLACE_ME')" aria-label="Action 11">11</button>
+				<button class="grid-btn" role="gridcell" data-action="act-12" data-cmd="REPLACE_ME" onClick="wwr_req('REPLACE_ME')" aria-label="Action 12">12</button>
+				<button class="grid-btn" role="gridcell" data-action="act-13" data-cmd="REPLACE_ME" onClick="wwr_req('REPLACE_ME')" aria-label="Action 13">13</button>
+				<button class="grid-btn" role="gridcell" data-action="act-14" data-cmd="REPLACE_ME" onClick="wwr_req('REPLACE_ME')" aria-label="Action 14">14</button>
+				<button class="grid-btn" role="gridcell" data-action="act-15" data-cmd="REPLACE_ME" onClick="wwr_req('REPLACE_ME')" aria-label="Action 15">15</button>
+
+				<!-- Row 4 -->
+				<button class="grid-btn" role="gridcell" data-action="act-16" data-cmd="REPLACE_ME" onClick="wwr_req('REPLACE_ME')" aria-label="Action 16">16</button>
+				<button class="grid-btn" role="gridcell" data-action="act-17" data-cmd="REPLACE_ME" onClick="wwr_req('REPLACE_ME')" aria-label="Action 17">17</button>
+				<button class="grid-btn" role="gridcell" data-action="act-18" data-cmd="REPLACE_ME" onClick="wwr_req('REPLACE_ME')" aria-label="Action 18">18</button>
+				<button class="grid-btn" role="gridcell" data-action="act-19" data-cmd="REPLACE_ME" onClick="wwr_req('REPLACE_ME')" aria-label="Action 19">19</button>
+				<button class="grid-btn" role="gridcell" data-action="act-20" data-cmd="REPLACE_ME" onClick="wwr_req('REPLACE_ME')" aria-label="Action 20">20</button>
+
+				<!-- Row 5 -->
+				<button class="grid-btn" role="gridcell" data-action="act-21" data-cmd="REPLACE_ME" onClick="wwr_req('REPLACE_ME')" aria-label="Action 21">21</button>
+				<button class="grid-btn" role="gridcell" data-action="act-22" data-cmd="REPLACE_ME" onClick="wwr_req('REPLACE_ME')" aria-label="Action 22">22</button>
+				<button class="grid-btn" role="gridcell" data-action="act-23" data-cmd="REPLACE_ME" onClick="wwr_req('REPLACE_ME')" aria-label="Action 23">23</button>
+				<button class="grid-btn" role="gridcell" data-action="act-24" data-cmd="REPLACE_ME" onClick="wwr_req('REPLACE_ME')" aria-label="Action 24">24</button>
+				<button class="grid-btn" role="gridcell" data-action="act-25" data-cmd="REPLACE_ME" onClick="wwr_req('REPLACE_ME')" aria-label="Action 25">25</button>
+			</div>
+		</main>
+
+		<!-- Optional small toast for feedback when no endpoint is configured -->
+		<div id="toast" class="toast" aria-live="polite" aria-atomic="true"></div>
+
+
+	</body>
+</html>
+
