@@ -1,13 +1,19 @@
--- jg_CURSE_MapLastTouchedTrackMIDIToChannel1.lua
--- Set "Map input to channel" to MIDI Channel 1 on the last-touched track
--- Author: jg
--- Version: 0.1
--- Notes:
---  Uses the track "I_RECINPUT" integer bitfield.
---  Bits explained (from ReaScript API):
---    - bit 12 (value 4096) = input is MIDI
---    - low 5 bits = channel (0=all, 1..16)
---    - next 6 bits = physical input index (63 = all physical inputs)
+-- @description Map last touched track MIDI to channel n
+-- @version 0.1
+-- @author Johann Grillenbeck
+-- @about
+--   # Map last touched track MIDI to channel n
+--   Sets "Map input to channel" to MIDI Channel n on the last-touched track
+--   # Script Logic
+--   Uses the track "I_RECINPUT" integer bitfield.
+--   Bits explained (from ReaScript API):
+--   - bit 12 (value 4096) = input is MIDI
+--   - low 5 bits = channel (0=all, 1..16)
+--   - next 6 bits = physical input index (63 = all physical inputs)
+-- @links
+--   GitHub https://github.com/johanngrillenbeck/CURSE
+-- @changelog
+--   Added Reapack Packaging Metadata
 
 local r = reaper
 

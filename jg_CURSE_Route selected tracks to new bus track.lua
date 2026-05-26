@@ -1,8 +1,8 @@
--- jg_CURSE_RouteSelectedTracksToNewBus.lua
--- CURSE (Collection of Useful Reaper Scripts and Enhancements)
--- Author: jg
--- Version: 0.1
--- Description:
+-- @description Route selected tracks to new bus track
+-- @version 0.1
+-- @author Johann Grillenbeck
+-- @about
+--   # Route selected tracks to new bus track
 --   Creates a new Bus track and routes all currently selected tracks to it via sends.
 --   - Disables the selected tracks' Master/Parent send so audio flows through the Bus to Master.
 --   - Prompts for Bus track name
@@ -10,19 +10,14 @@
 --   - Prompts whether to prefix name with "B" (checkbox, default ON)
 --   - Sets Bus track's channel count to the maximum channel count found among selected tracks
 --   - Creates sends from each selected track to the Bus track, sending all source channels
---
--- Requirements: Reaper 6+, ReaScript API. SWS recommended but not required.
---
--- Notes on multichannel:
+--   # Notes on multichannel audio for script development
 --   Reaper send channel mapping: you can set source/dest channel via B_MUTE and I_SRCCHAN/I_DSTCHAN fields.
 --   For multichannel, set I_SRCCHAN = -1 to send "all channels" (Reaper uses -1 for automatic/all).
 --   Alternatively, we can set the destination track to have the appropriate number of channels and leave default mapping.
---
--- Safety:
---   Script checks for selection and cancels with messages if nothing is selected or user cancels.
---
--- To Do:
---   - Better UI via ReaImGui
+-- @links
+--   GitHub https://github.com/johanngrillenbeck/CURSE
+-- @changelog
+--   Added Reapack Packaging Metadata
 
 local r = reaper
 

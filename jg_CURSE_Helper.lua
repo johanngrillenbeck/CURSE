@@ -1,10 +1,14 @@
--- jg_CURSE_Helper.lua
--- Shared utilities for CURSE Reaper scripts (routing, prompts, track ops)
--- Author: jg
--- Version: 0.1
--- Description:
+-- @description CURSE Helper
+-- @version 0.1
+-- @author Johann Grillenbeck
+-- @about
+--   # CURSE Helper
 --   Common functions to avoid duplication across CURSE scripts.
 --   Exposes helpers for selection, channels, prompts, insertion, track ops, and routing.
+-- @links
+--   GitHub https://github.com/johanngrillenbeck/CURSE
+-- @changelog
+--   Added Reapack Packaging Metadata
 
 local r = reaper
 

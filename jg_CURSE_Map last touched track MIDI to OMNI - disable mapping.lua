@@ -1,7 +1,13 @@
--- jg_CURSE_DisableMidiMapOnLastTouchedTrack.lua
--- Disable "Map input to channel" (set to omnichannel / -1) on the last-touched track
--- Author: jg
--- Version: 0.1
+-- @description Map last touched track MIDI to OMNI - disable mapping
+-- @version 0.1
+-- @author Johann Grillenbeck
+-- @about
+--   # Map last touched track MIDI to OMNI
+--   Disable "Map input to channel" (set to omnichannel / -1) on the last-touched track
+-- @links
+--   GitHub https://github.com/johanngrillenbeck/CURSE
+-- @changelog
+--   Added Reapack Packaging Metadata
 
 local r = reaper
 

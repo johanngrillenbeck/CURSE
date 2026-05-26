@@ -1,19 +1,21 @@
--- jg_CURSE_AddRenderedFilesAsTakes.lua
--- Author: jg
--- Version: 1.0
--- Description:
+-- @description Name-match import files as new active takes for selected items
+-- @version 0.1
+-- @author Johann Grillenbeck
+-- @about
+--   # Name-match import files as new active takes for selected items
 --   Matches selected media items to user-picked audio files by a shared core key
 --   (cue number + instrument number, e.g. "1m03_01"), then inserts each matched
 --   audio file as a new active take on the corresponding item.
---
---   Matching logic:
---     - Core key pattern: "%d+m%d+_%d+"  (e.g. "1m03_01")
---     - The key is searched inside the basename of both the item's active take
---       source filename and each picked audio file. Project prefixes and render
---       suffixes are ignored automatically.
---     - Example: "1m03_01_Drums_pre-comb" matches "WOUI_1m03_01_Drums_comb"
---
---   Requires: js_ReaScriptAPI extension (for multi-file open dialog)
+--   # Matching logic
+--   - Core key pattern: "%d+m%d+_%d+"  (e.g. "1m03_01")
+--   - The key is searched inside the basename of both the item's active take
+--     source filename and each picked audio file. Project prefixes and render
+--     suffixes are ignored automatically.
+--   - Example: "1m03_01_Drums_pre-comb" matches "WOUI_1m03_01_Drums_comb"
+-- @links
+--   GitHub https://github.com/johanngrillenbeck/CURSE
+-- @changelog
+--   Added Reapack Packaging Metadata
 
 local r = reaper
 
