@@ -1,0 +1,512 @@
+<?xml version="1.0" encoding="utf-8"?>
+<index version="1" commit="2cf6f2dc5c0786b5dccd97d222e17768143fb953" name="jg_CURSE">
+  <category name="Actions">
+    <reapack name="jg_CURSE_Config.lua" type="script" desc="CURSE Configuration">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 CURSE Configuration\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 This will turn into a text or csv file someday, but for now, edit this script for the config.\par}
+}
+]]></description>
+        <link rel="website" href="https://github.com/johanngrillenbeck/CURSE">GitHub</link>
+      </metadata>
+      <version name="0.1" author="Johann Grillenbeck" time="2026-05-27T08:41:27Z">
+        <changelog><![CDATA[Added Reapack Packaging Metadata]]></changelog>
+        <source main="main">https://github.com/johanngrillenbeck/CURSE/raw/2cf6f2dc5c0786b5dccd97d222e17768143fb953/Actions/jg_CURSE_Config.lua</source>
+      </version>
+    </reapack>
+    <reapack name="jg_CURSE_Freeze only first VST.lua" type="script" desc="Freeze only first VST">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Freeze only first VST\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 This script allows you to freeze only the first VST in the FX Chain, keeping all other VSTs online. Use it for freezing virtual instruments without affecting the subsequent audio effects.\par}
+}
+]]></description>
+        <link rel="website" href="https://github.com/johanngrillenbeck/CURSE">GitHub</link>
+      </metadata>
+      <version name="0.1" author="Johann Grillenbeck" time="2026-05-27T08:41:27Z">
+        <changelog><![CDATA[Added script dummy file]]></changelog>
+        <source main="main">https://github.com/johanngrillenbeck/CURSE/raw/2cf6f2dc5c0786b5dccd97d222e17768143fb953/Actions/jg_CURSE_Freeze%20only%20first%20VST.lua</source>
+      </version>
+    </reapack>
+    <reapack name="jg_CURSE_Helper.lua" type="script" desc="CURSE Helper">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 CURSE Helper\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Common functions to avoid duplication across CURSE scripts. Exposes helpers for selection, channels, prompts, insertion, track ops, and routing.\par}
+}
+]]></description>
+        <link rel="website" href="https://github.com/johanngrillenbeck/CURSE">GitHub</link>
+      </metadata>
+      <version name="0.1" author="Johann Grillenbeck" time="2026-05-27T08:41:27Z">
+        <changelog><![CDATA[Added Reapack Packaging Metadata]]></changelog>
+        <source main="main">https://github.com/johanngrillenbeck/CURSE/raw/2cf6f2dc5c0786b5dccd97d222e17768143fb953/Actions/jg_CURSE_Helper.lua</source>
+      </version>
+    </reapack>
+    <reapack name="jg_CURSE_Map last touched track MIDI to channel 1.lua" type="script" desc="Map last touched track MIDI to channel n">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Map last touched track MIDI to channel n\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Sets "Map input to channel" to MIDI Channel n on the last-touched track\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Script Logic\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Uses the track "I_RECINPUT" integer bitfield. Bits explained (from ReaScript API):\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab bit 12 (value 4096) = input is MIDI\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab low 5 bits = channel (0=all, 1..16)\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab next 6 bits = physical input index (63 = all physical inputs)\sa180\par}
+}
+]]></description>
+        <link rel="website" href="https://github.com/johanngrillenbeck/CURSE">GitHub</link>
+      </metadata>
+      <version name="0.1" author="Johann Grillenbeck" time="2026-05-27T08:41:27Z">
+        <changelog><![CDATA[Added Reapack Packaging Metadata]]></changelog>
+        <source main="main">https://github.com/johanngrillenbeck/CURSE/raw/2cf6f2dc5c0786b5dccd97d222e17768143fb953/Actions/jg_CURSE_Map%20last%20touched%20track%20MIDI%20to%20channel%201.lua</source>
+      </version>
+    </reapack>
+    <reapack name="jg_CURSE_Map last touched track MIDI to channel 10.lua" type="script" desc="Map last touched track MIDI to channel n">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Map last touched track MIDI to channel n\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Sets "Map input to channel" to MIDI Channel n on the last-touched track\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Script Logic\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Uses the track "I_RECINPUT" integer bitfield. Bits explained (from ReaScript API):\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab bit 12 (value 4096) = input is MIDI\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab low 5 bits = channel (0=all, 1..16)\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab next 6 bits = physical input index (63 = all physical inputs)\sa180\par}
+}
+]]></description>
+        <link rel="website" href="https://github.com/johanngrillenbeck/CURSE">GitHub</link>
+      </metadata>
+      <version name="0.1" author="Johann Grillenbeck" time="2026-05-27T08:41:27Z">
+        <changelog><![CDATA[Added Reapack Packaging Metadata]]></changelog>
+        <source main="main">https://github.com/johanngrillenbeck/CURSE/raw/2cf6f2dc5c0786b5dccd97d222e17768143fb953/Actions/jg_CURSE_Map%20last%20touched%20track%20MIDI%20to%20channel%2010.lua</source>
+      </version>
+    </reapack>
+    <reapack name="jg_CURSE_Map last touched track MIDI to channel 11.lua" type="script" desc="Map last touched track MIDI to channel n">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Map last touched track MIDI to channel n\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Sets "Map input to channel" to MIDI Channel n on the last-touched track\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Script Logic\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Uses the track "I_RECINPUT" integer bitfield. Bits explained (from ReaScript API):\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab bit 12 (value 4096) = input is MIDI\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab low 5 bits = channel (0=all, 1..16)\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab next 6 bits = physical input index (63 = all physical inputs)\sa180\par}
+}
+]]></description>
+        <link rel="website" href="https://github.com/johanngrillenbeck/CURSE">GitHub</link>
+      </metadata>
+      <version name="0.1" author="Johann Grillenbeck" time="2026-05-27T08:41:27Z">
+        <changelog><![CDATA[Added Reapack Packaging Metadata]]></changelog>
+        <source main="main">https://github.com/johanngrillenbeck/CURSE/raw/2cf6f2dc5c0786b5dccd97d222e17768143fb953/Actions/jg_CURSE_Map%20last%20touched%20track%20MIDI%20to%20channel%2011.lua</source>
+      </version>
+    </reapack>
+    <reapack name="jg_CURSE_Map last touched track MIDI to channel 12.lua" type="script" desc="Map last touched track MIDI to channel n">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Map last touched track MIDI to channel n\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Sets "Map input to channel" to MIDI Channel n on the last-touched track\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Script Logic\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Uses the track "I_RECINPUT" integer bitfield. Bits explained (from ReaScript API):\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab bit 12 (value 4096) = input is MIDI\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab low 5 bits = channel (0=all, 1..16)\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab next 6 bits = physical input index (63 = all physical inputs)\sa180\par}
+}
+]]></description>
+        <link rel="website" href="https://github.com/johanngrillenbeck/CURSE">GitHub</link>
+      </metadata>
+      <version name="0.1" author="Johann Grillenbeck" time="2026-05-27T08:41:27Z">
+        <changelog><![CDATA[Added Reapack Packaging Metadata]]></changelog>
+        <source main="main">https://github.com/johanngrillenbeck/CURSE/raw/2cf6f2dc5c0786b5dccd97d222e17768143fb953/Actions/jg_CURSE_Map%20last%20touched%20track%20MIDI%20to%20channel%2012.lua</source>
+      </version>
+    </reapack>
+    <reapack name="jg_CURSE_Map last touched track MIDI to channel 13.lua" type="script" desc="Map last touched track MIDI to channel n">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Map last touched track MIDI to channel n\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Sets "Map input to channel" to MIDI Channel n on the last-touched track\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Script Logic\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Uses the track "I_RECINPUT" integer bitfield. Bits explained (from ReaScript API):\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab bit 12 (value 4096) = input is MIDI\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab low 5 bits = channel (0=all, 1..16)\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab next 6 bits = physical input index (63 = all physical inputs)\sa180\par}
+}
+]]></description>
+        <link rel="website" href="https://github.com/johanngrillenbeck/CURSE">GitHub</link>
+      </metadata>
+      <version name="0.1" author="Johann Grillenbeck" time="2026-05-27T08:41:27Z">
+        <changelog><![CDATA[Added Reapack Packaging Metadata]]></changelog>
+        <source main="main">https://github.com/johanngrillenbeck/CURSE/raw/2cf6f2dc5c0786b5dccd97d222e17768143fb953/Actions/jg_CURSE_Map%20last%20touched%20track%20MIDI%20to%20channel%2013.lua</source>
+      </version>
+    </reapack>
+    <reapack name="jg_CURSE_Map last touched track MIDI to channel 14.lua" type="script" desc="Map last touched track MIDI to channel n">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Map last touched track MIDI to channel n\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Sets "Map input to channel" to MIDI Channel n on the last-touched track\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Script Logic\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Uses the track "I_RECINPUT" integer bitfield. Bits explained (from ReaScript API):\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab bit 12 (value 4096) = input is MIDI\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab low 5 bits = channel (0=all, 1..16)\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab next 6 bits = physical input index (63 = all physical inputs)\sa180\par}
+}
+]]></description>
+        <link rel="website" href="https://github.com/johanngrillenbeck/CURSE">GitHub</link>
+      </metadata>
+      <version name="0.1" author="Johann Grillenbeck" time="2026-05-27T08:41:27Z">
+        <changelog><![CDATA[Added Reapack Packaging Metadata]]></changelog>
+        <source main="main">https://github.com/johanngrillenbeck/CURSE/raw/2cf6f2dc5c0786b5dccd97d222e17768143fb953/Actions/jg_CURSE_Map%20last%20touched%20track%20MIDI%20to%20channel%2014.lua</source>
+      </version>
+    </reapack>
+    <reapack name="jg_CURSE_Map last touched track MIDI to channel 15.lua" type="script" desc="Map last touched track MIDI to channel n">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Map last touched track MIDI to channel n\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Sets "Map input to channel" to MIDI Channel n on the last-touched track\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Script Logic\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Uses the track "I_RECINPUT" integer bitfield. Bits explained (from ReaScript API):\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab bit 12 (value 4096) = input is MIDI\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab low 5 bits = channel (0=all, 1..16)\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab next 6 bits = physical input index (63 = all physical inputs)\sa180\par}
+}
+]]></description>
+        <link rel="website" href="https://github.com/johanngrillenbeck/CURSE">GitHub</link>
+      </metadata>
+      <version name="0.1" author="Johann Grillenbeck" time="2026-05-27T08:41:27Z">
+        <changelog><![CDATA[Added Reapack Packaging Metadata]]></changelog>
+        <source main="main">https://github.com/johanngrillenbeck/CURSE/raw/2cf6f2dc5c0786b5dccd97d222e17768143fb953/Actions/jg_CURSE_Map%20last%20touched%20track%20MIDI%20to%20channel%2015.lua</source>
+      </version>
+    </reapack>
+    <reapack name="jg_CURSE_Map last touched track MIDI to channel 16.lua" type="script" desc="Map last touched track MIDI to channel n">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Map last touched track MIDI to channel n\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Sets "Map input to channel" to MIDI Channel n on the last-touched track\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Script Logic\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Uses the track "I_RECINPUT" integer bitfield. Bits explained (from ReaScript API):\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab bit 12 (value 4096) = input is MIDI\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab low 5 bits = channel (0=all, 1..16)\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab next 6 bits = physical input index (63 = all physical inputs)\sa180\par}
+}
+]]></description>
+        <link rel="website" href="https://github.com/johanngrillenbeck/CURSE">GitHub</link>
+      </metadata>
+      <version name="0.1" author="Johann Grillenbeck" time="2026-05-27T08:41:27Z">
+        <changelog><![CDATA[Added Reapack Packaging Metadata]]></changelog>
+        <source main="main">https://github.com/johanngrillenbeck/CURSE/raw/2cf6f2dc5c0786b5dccd97d222e17768143fb953/Actions/jg_CURSE_Map%20last%20touched%20track%20MIDI%20to%20channel%2016.lua</source>
+      </version>
+    </reapack>
+    <reapack name="jg_CURSE_Map last touched track MIDI to channel 2.lua" type="script" desc="Map last touched track MIDI to channel n">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Map last touched track MIDI to channel n\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Sets "Map input to channel" to MIDI Channel n on the last-touched track\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Script Logic\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Uses the track "I_RECINPUT" integer bitfield. Bits explained (from ReaScript API):\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab bit 12 (value 4096) = input is MIDI\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab low 5 bits = channel (0=all, 1..16)\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab next 6 bits = physical input index (63 = all physical inputs)\sa180\par}
+}
+]]></description>
+        <link rel="website" href="https://github.com/johanngrillenbeck/CURSE">GitHub</link>
+      </metadata>
+      <version name="0.1" author="Johann Grillenbeck" time="2026-05-27T08:41:27Z">
+        <changelog><![CDATA[Added Reapack Packaging Metadata]]></changelog>
+        <source main="main">https://github.com/johanngrillenbeck/CURSE/raw/2cf6f2dc5c0786b5dccd97d222e17768143fb953/Actions/jg_CURSE_Map%20last%20touched%20track%20MIDI%20to%20channel%202.lua</source>
+      </version>
+    </reapack>
+    <reapack name="jg_CURSE_Map last touched track MIDI to channel 3.lua" type="script" desc="Map last touched track MIDI to channel n">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Map last touched track MIDI to channel n\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Sets "Map input to channel" to MIDI Channel n on the last-touched track\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Script Logic\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Uses the track "I_RECINPUT" integer bitfield. Bits explained (from ReaScript API):\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab bit 12 (value 4096) = input is MIDI\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab low 5 bits = channel (0=all, 1..16)\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab next 6 bits = physical input index (63 = all physical inputs)\sa180\par}
+}
+]]></description>
+        <link rel="website" href="https://github.com/johanngrillenbeck/CURSE">GitHub</link>
+      </metadata>
+      <version name="0.1" author="Johann Grillenbeck" time="2026-05-27T08:41:27Z">
+        <changelog><![CDATA[Added Reapack Packaging Metadata]]></changelog>
+        <source main="main">https://github.com/johanngrillenbeck/CURSE/raw/2cf6f2dc5c0786b5dccd97d222e17768143fb953/Actions/jg_CURSE_Map%20last%20touched%20track%20MIDI%20to%20channel%203.lua</source>
+      </version>
+    </reapack>
+    <reapack name="jg_CURSE_Map last touched track MIDI to channel 4.lua" type="script" desc="Map last touched track MIDI to channel n">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Map last touched track MIDI to channel n\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Sets "Map input to channel" to MIDI Channel n on the last-touched track\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Script Logic\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Uses the track "I_RECINPUT" integer bitfield. Bits explained (from ReaScript API):\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab bit 12 (value 4096) = input is MIDI\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab low 5 bits = channel (0=all, 1..16)\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab next 6 bits = physical input index (63 = all physical inputs)\sa180\par}
+}
+]]></description>
+        <link rel="website" href="https://github.com/johanngrillenbeck/CURSE">GitHub</link>
+      </metadata>
+      <version name="0.1" author="Johann Grillenbeck" time="2026-05-27T08:41:27Z">
+        <changelog><![CDATA[Added Reapack Packaging Metadata]]></changelog>
+        <source main="main">https://github.com/johanngrillenbeck/CURSE/raw/2cf6f2dc5c0786b5dccd97d222e17768143fb953/Actions/jg_CURSE_Map%20last%20touched%20track%20MIDI%20to%20channel%204.lua</source>
+      </version>
+    </reapack>
+    <reapack name="jg_CURSE_Map last touched track MIDI to channel 5.lua" type="script" desc="Map last touched track MIDI to channel n">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Map last touched track MIDI to channel n\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Sets "Map input to channel" to MIDI Channel n on the last-touched track\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Script Logic\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Uses the track "I_RECINPUT" integer bitfield. Bits explained (from ReaScript API):\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab bit 12 (value 4096) = input is MIDI\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab low 5 bits = channel (0=all, 1..16)\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab next 6 bits = physical input index (63 = all physical inputs)\sa180\par}
+}
+]]></description>
+        <link rel="website" href="https://github.com/johanngrillenbeck/CURSE">GitHub</link>
+      </metadata>
+      <version name="0.1" author="Johann Grillenbeck" time="2026-05-27T08:41:27Z">
+        <changelog><![CDATA[Added Reapack Packaging Metadata]]></changelog>
+        <source main="main">https://github.com/johanngrillenbeck/CURSE/raw/2cf6f2dc5c0786b5dccd97d222e17768143fb953/Actions/jg_CURSE_Map%20last%20touched%20track%20MIDI%20to%20channel%205.lua</source>
+      </version>
+    </reapack>
+    <reapack name="jg_CURSE_Map last touched track MIDI to channel 6.lua" type="script" desc="Map last touched track MIDI to channel n">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Map last touched track MIDI to channel n\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Sets "Map input to channel" to MIDI Channel n on the last-touched track\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Script Logic\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Uses the track "I_RECINPUT" integer bitfield. Bits explained (from ReaScript API):\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab bit 12 (value 4096) = input is MIDI\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab low 5 bits = channel (0=all, 1..16)\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab next 6 bits = physical input index (63 = all physical inputs)\sa180\par}
+}
+]]></description>
+        <link rel="website" href="https://github.com/johanngrillenbeck/CURSE">GitHub</link>
+      </metadata>
+      <version name="0.1" author="Johann Grillenbeck" time="2026-05-27T08:41:27Z">
+        <changelog><![CDATA[Added Reapack Packaging Metadata]]></changelog>
+        <source main="main">https://github.com/johanngrillenbeck/CURSE/raw/2cf6f2dc5c0786b5dccd97d222e17768143fb953/Actions/jg_CURSE_Map%20last%20touched%20track%20MIDI%20to%20channel%206.lua</source>
+      </version>
+    </reapack>
+    <reapack name="jg_CURSE_Map last touched track MIDI to channel 7.lua" type="script" desc="Map last touched track MIDI to channel n">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Map last touched track MIDI to channel n\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Sets "Map input to channel" to MIDI Channel n on the last-touched track\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Script Logic\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Uses the track "I_RECINPUT" integer bitfield. Bits explained (from ReaScript API):\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab bit 12 (value 4096) = input is MIDI\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab low 5 bits = channel (0=all, 1..16)\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab next 6 bits = physical input index (63 = all physical inputs)\sa180\par}
+}
+]]></description>
+        <link rel="website" href="https://github.com/johanngrillenbeck/CURSE">GitHub</link>
+      </metadata>
+      <version name="0.1" author="Johann Grillenbeck" time="2026-05-27T08:41:27Z">
+        <changelog><![CDATA[Added Reapack Packaging Metadata]]></changelog>
+        <source main="main">https://github.com/johanngrillenbeck/CURSE/raw/2cf6f2dc5c0786b5dccd97d222e17768143fb953/Actions/jg_CURSE_Map%20last%20touched%20track%20MIDI%20to%20channel%207.lua</source>
+      </version>
+    </reapack>
+    <reapack name="jg_CURSE_Map last touched track MIDI to channel 8.lua" type="script" desc="Map last touched track MIDI to channel n">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Map last touched track MIDI to channel n\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Sets "Map input to channel" to MIDI Channel n on the last-touched track\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Script Logic\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Uses the track "I_RECINPUT" integer bitfield. Bits explained (from ReaScript API):\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab bit 12 (value 4096) = input is MIDI\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab low 5 bits = channel (0=all, 1..16)\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab next 6 bits = physical input index (63 = all physical inputs)\sa180\par}
+}
+]]></description>
+        <link rel="website" href="https://github.com/johanngrillenbeck/CURSE">GitHub</link>
+      </metadata>
+      <version name="0.1" author="Johann Grillenbeck" time="2026-05-27T08:41:27Z">
+        <changelog><![CDATA[Added Reapack Packaging Metadata]]></changelog>
+        <source main="main">https://github.com/johanngrillenbeck/CURSE/raw/2cf6f2dc5c0786b5dccd97d222e17768143fb953/Actions/jg_CURSE_Map%20last%20touched%20track%20MIDI%20to%20channel%208.lua</source>
+      </version>
+    </reapack>
+    <reapack name="jg_CURSE_Map last touched track MIDI to channel 9.lua" type="script" desc="Map last touched track MIDI to channel n">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Map last touched track MIDI to channel n\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Sets "Map input to channel" to MIDI Channel n on the last-touched track\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Script Logic\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Uses the track "I_RECINPUT" integer bitfield. Bits explained (from ReaScript API):\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab bit 12 (value 4096) = input is MIDI\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab low 5 bits = channel (0=all, 1..16)\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab next 6 bits = physical input index (63 = all physical inputs)\sa180\par}
+}
+]]></description>
+        <link rel="website" href="https://github.com/johanngrillenbeck/CURSE">GitHub</link>
+      </metadata>
+      <version name="0.1" author="Johann Grillenbeck" time="2026-05-27T08:41:27Z">
+        <changelog><![CDATA[Added Reapack Packaging Metadata]]></changelog>
+        <source main="main">https://github.com/johanngrillenbeck/CURSE/raw/2cf6f2dc5c0786b5dccd97d222e17768143fb953/Actions/jg_CURSE_Map%20last%20touched%20track%20MIDI%20to%20channel%209.lua</source>
+      </version>
+    </reapack>
+    <reapack name="jg_CURSE_Map last touched track MIDI to OMNI - disable mapping.lua" type="script" desc="Map last touched track MIDI to OMNI - disable mapping">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Map last touched track MIDI to OMNI\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Disable "Map input to channel" (set to omnichannel / -1) on the last-touched track\par}
+}
+]]></description>
+        <link rel="website" href="https://github.com/johanngrillenbeck/CURSE">GitHub</link>
+      </metadata>
+      <version name="0.1" author="Johann Grillenbeck" time="2026-05-27T08:41:27Z">
+        <changelog><![CDATA[Added Reapack Packaging Metadata]]></changelog>
+        <source main="main">https://github.com/johanngrillenbeck/CURSE/raw/2cf6f2dc5c0786b5dccd97d222e17768143fb953/Actions/jg_CURSE_Map%20last%20touched%20track%20MIDI%20to%20OMNI%20-%20disable%20mapping.lua</source>
+      </version>
+    </reapack>
+    <reapack name="jg_CURSE_name-match import files as new active takes for selected items.lua" type="script" desc="Name-match import files as new active takes for selected items">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Name-match import files as new active takes for selected items\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Matches selected media items to user-picked audio files by a shared core key (cue number + instrument number, e.g. "1m03_01"), then inserts each matched audio file as a new active take on the corresponding item.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Matching logic\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Core key pattern: "%d+m%d+_%d+" (e.g. "1m03_01")\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab The key is searched inside the basename of both the item's active take source filename and each picked audio file. Project prefixes and render suffixes are ignored automatically.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Example: "1m03_01_Drums_pre-comb" matches "WOUI_1m03_01_Drums_comb"\sa180\par}
+}
+]]></description>
+        <link rel="website" href="https://github.com/johanngrillenbeck/CURSE">GitHub</link>
+      </metadata>
+      <version name="0.1" author="Johann Grillenbeck" time="2026-05-27T08:41:27Z">
+        <changelog><![CDATA[Added Reapack Packaging Metadata]]></changelog>
+        <source main="main">https://github.com/johanngrillenbeck/CURSE/raw/2cf6f2dc5c0786b5dccd97d222e17768143fb953/Actions/jg_CURSE_name-match%20import%20files%20as%20new%20active%20takes%20for%20selected%20items.lua</source>
+      </version>
+    </reapack>
+    <reapack name="jg_CURSE_Route selected tracks to new bus track.lua" type="script" desc="Route selected tracks to new bus track">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Route selected tracks to new bus track\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Creates a new Bus track and routes all currently selected tracks to it via sends.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Disables the selected tracks' Master/Parent send so audio flows through the Bus to Master.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Prompts for Bus track name\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Prompts for placement: after last selected track OR at end of project\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Prompts whether to prefix name with "B" (checkbox, default ON)\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Sets Bus track's channel count to the maximum channel count found among selected tracks\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Creates sends from each selected track to the Bus track, sending all source channels\sa180\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Notes on multichannel audio for script development\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Reaper send channel mapping: you can set source/dest channel via B_MUTE and I_SRCCHAN/I_DSTCHAN fields. For multichannel, set I_SRCCHAN = -1 to send "all channels" (Reaper uses -1 for automatic/all). Alternatively, we can set the destination track to have the appropriate number of channels and leave default mapping.\par}
+}
+]]></description>
+        <link rel="website" href="https://github.com/johanngrillenbeck/CURSE">GitHub</link>
+      </metadata>
+      <version name="0.1" author="Johann Grillenbeck" time="2026-05-27T08:41:27Z">
+        <changelog><![CDATA[Added Reapack Packaging Metadata]]></changelog>
+        <source main="main">https://github.com/johanngrillenbeck/CURSE/raw/2cf6f2dc5c0786b5dccd97d222e17768143fb953/Actions/jg_CURSE_Route%20selected%20tracks%20to%20new%20bus%20track.lua</source>
+      </version>
+    </reapack>
+    <reapack name="jg_CURSE_Route selected tracks to new send FX track.lua" type="script" desc="Route selected tracks to new bus track">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Route selected tracks to new send FX track\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Creates a new FX "bus" track and routes all currently selected tracks to it.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Prompts for FX track name\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Prompts for placement: after last selected track OR at end of project\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Prompts whether to prefix name with "FX" (checkbox, default ON)\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Sets FX track's channel count to the maximum channel count found among selected tracks\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Creates sends from each selected track to the FX track, sending all source channels\sa180\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Notes on multichannel audio for script development\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Reaper send channel mapping: you can set source/dest channel via B_MUTE and I_SRCCHAN/I_DSTCHAN fields. For multichannel, set I_SRCCHAN = -1 to send "all channels" (Reaper uses -1 for automatic/all). Alternatively, we can set the destination track to have the appropriate number of channels and leave default mapping.\par}
+}
+]]></description>
+        <link rel="website" href="https://github.com/johanngrillenbeck/CURSE">GitHub</link>
+      </metadata>
+      <version name="0.1" author="Johann Grillenbeck" time="2026-05-27T08:41:27Z">
+        <changelog><![CDATA[Added Reapack Packaging Metadata]]></changelog>
+        <source main="main">https://github.com/johanngrillenbeck/CURSE/raw/2cf6f2dc5c0786b5dccd97d222e17768143fb953/Actions/jg_CURSE_Route%20selected%20tracks%20to%20new%20send%20FX%20track.lua</source>
+      </version>
+    </reapack>
+    <reapack name="jg_CURSE_Sanitize MIDI from Dorico.lua" type="script" desc="Sanitize MIDI from Dorico">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Sanitize MIDI from Dorico\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 This script helps you import clean MIDI from Dorico, moving all note events to MIDI Channel 1 and getting rid of all but the necessary MIDI CC.\par}
+}
+]]></description>
+        <link rel="website" href="https://github.com/johanngrillenbeck/CURSE">GitHub</link>
+      </metadata>
+      <version name="0.1" author="Johann Grillenbeck" time="2026-05-27T08:41:27Z">
+        <changelog><![CDATA[Added script dummy file]]></changelog>
+        <source main="main">https://github.com/johanngrillenbeck/CURSE/raw/2cf6f2dc5c0786b5dccd97d222e17768143fb953/Actions/jg_CURSE_Sanitize%20MIDI%20from%20Dorico.lua</source>
+      </version>
+    </reapack>
+  </category>
+</index>
