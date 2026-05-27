@@ -1,5 +1,5 @@
 -- @description Map selected track(s) MIDI input to channel [1-16]
--- @version 0.1
+-- @version 0.2
 -- @author Johann Grillenbeck
 -- @about
 --   # Map selected track(s) MIDI input to channel [1-16]
@@ -13,7 +13,8 @@
 -- @links
 --   GitHub https://github.com/johanngrillenbeck/CURSE
 -- @changelog
---   Added script as a metapackage
+--   Now uses "GetSelectedTrack" instead of "LastTouchedTrack"
+--   Changed name to reflect behavior
 -- @metapackage
 -- @provides
 --   [main] . > jg_CURSE_Map selected tracks MIDI input to channel 01.lua
@@ -51,46 +52,41 @@ end
 
 local target_zero_based = channel - 1 -- REAPER uses 0-based channel index
 
--- Set the selected track's MIDI input mapping to the slot channel
-local track = r.GetSelectedTrack()
-if not track then
-  r.ShowMessageBox("No selected track found.", "jg_CURSE", 0)
+local track_count = r.CountSelectedTracks(0)
+if track_count == 0 then
+  r.ShowMessageBox("No selected tracks found.", "jg_CURSE", 0)
   return
 end
 
--- Read chunk
-local ok, chunk = r.GetTrackStateChunk(track, "", false)
-if not ok or not chunk then
-  r.ShowMessageBox("Failed to read track state chunk.", "jg_CURSE", 0)
-  return
-end
+local undo_label = string.format("Map selected tracks MIDI input to channel %d", channel)
+r.Undo_BeginBlock()
 
--- Replace existing MIDI_INPUT_CHANMAP if present
-local replaced
-chunk, replaced = chunk:gsub("MIDI_INPUT_CHANMAP%s+%-?%d+", "MIDI_INPUT_CHANMAP " .. tostring(target_zero_based))
+for i = 0, track_count - 1 do
+  local track = r.GetSelectedTrack(0, i)
 
--- If not present, insert before the first occurrence of MIDIOUT or NAME, otherwise append near top
-if replaced == 0 then
-  local insert_pos = chunk:find("\nMIDIOUT") or chunk:find("\nNAME")
-  if insert_pos then
-    local before = chunk:sub(1, insert_pos)
-    local after = chunk:sub(insert_pos + 1)
-    chunk = before .. "MIDI_INPUT_CHANMAP " .. tostring(target_zero_based) .. "\n" .. after
-  else
-    -- fallback: put at start
-    chunk = "MIDI_INPUT_CHANMAP " .. tostring(target_zero_based) .. "\n" .. chunk
+  -- Read chunk
+  local ok, chunk = r.GetTrackStateChunk(track, "", false)
+  if ok and chunk then
+    -- Replace existing MIDI_INPUT_CHANMAP if present
+    local replaced
+    chunk, replaced = chunk:gsub("MIDI_INPUT_CHANMAP%s+%-?%d+", "MIDI_INPUT_CHANMAP " .. tostring(target_zero_based))
+
+    -- If not present, insert before the first occurrence of MIDIOUT or NAME, otherwise append near top
+    if replaced == 0 then
+      local insert_pos = chunk:find("\nMIDIOUT") or chunk:find("\nNAME")
+      if insert_pos then
+        local before = chunk:sub(1, insert_pos)
+        local after = chunk:sub(insert_pos + 1)
+        chunk = before .. "MIDI_INPUT_CHANMAP " .. tostring(target_zero_based) .. "\n" .. after
+      else
+        chunk = "MIDI_INPUT_CHANMAP " .. tostring(target_zero_based) .. "\n" .. chunk
+      end
+    end
+
+    r.SetTrackStateChunk(track, chunk, false)
   end
 end
 
--- Apply change with undo
-local undo_label = string.format("Map selected tracks MIDI input to channel %d", channel)
-r.Undo_BeginBlock()
-local setok = r.SetTrackStateChunk(track, chunk, false)
-if not setok then
-  r.Undo_EndBlock(undo_label, -1)
-  r.ShowMessageBox("Failed to set track state chunk.", "jg_CURSE", 0)
-  return
-end
 r.TrackList_AdjustWindows(false)
 r.UpdateArrange()
 r.Undo_EndBlock(undo_label, -1)
