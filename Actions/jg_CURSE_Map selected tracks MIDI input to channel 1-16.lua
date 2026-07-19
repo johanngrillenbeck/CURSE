@@ -1,8 +1,8 @@
--- @description Map selected track(s) MIDI input to channel [1-16]
+-- @description Map last touched track MIDI input to channel [1-16]
 -- @version 0.1
 -- @author Johann Grillenbeck
 -- @about
---   # Map selected track(s) MIDI input to channel [1-16]
+--   # Map last touched track MIDI input to channel [1-16]
 --   Sets "Map input to channel" to MIDI Channel [1-16] on the last-touched track
 --   # Script Logic
 --   Uses the track "I_RECINPUT" integer bitfield.
@@ -16,22 +16,22 @@
 --   Added script as a metapackage
 -- @metapackage
 -- @provides
---   [main] . > jg_CURSE_Map selected tracks MIDI input to channel 01.lua
---   [main] . > jg_CURSE_Map selected tracks MIDI input to channel 02.lua
---   [main] . > jg_CURSE_Map selected tracks MIDI input to channel 03.lua
---   [main] . > jg_CURSE_Map selected tracks MIDI input to channel 04.lua
---   [main] . > jg_CURSE_Map selected tracks MIDI input to channel 05.lua
---   [main] . > jg_CURSE_Map selected tracks MIDI input to channel 06.lua
---   [main] . > jg_CURSE_Map selected tracks MIDI input to channel 07.lua
---   [main] . > jg_CURSE_Map selected tracks MIDI input to channel 08.lua
---   [main] . > jg_CURSE_Map selected tracks MIDI input to channel 09.lua
---   [main] . > jg_CURSE_Map selected tracks MIDI input to channel 10.lua
---   [main] . > jg_CURSE_Map selected tracks MIDI input to channel 11.lua
---   [main] . > jg_CURSE_Map selected tracks MIDI input to channel 12.lua
---   [main] . > jg_CURSE_Map selected tracks MIDI input to channel 13.lua
---   [main] . > jg_CURSE_Map selected tracks MIDI input to channel 14.lua
---   [main] . > jg_CURSE_Map selected tracks MIDI input to channel 15.lua
---   [main] . > jg_CURSE_Map selected tracks MIDI input to channel 16.lua
+--   [main] . > jg_CURSE_Map last touched track MIDI input to channel 01.lua
+--   [main] . > jg_CURSE_Map last touched track MIDI input to channel 02.lua
+--   [main] . > jg_CURSE_Map last touched track MIDI input to channel 03.lua
+--   [main] . > jg_CURSE_Map last touched track MIDI input to channel 04.lua
+--   [main] . > jg_CURSE_Map last touched track MIDI input to channel 05.lua
+--   [main] . > jg_CURSE_Map last touched track MIDI input to channel 06.lua
+--   [main] . > jg_CURSE_Map last touched track MIDI input to channel 07.lua
+--   [main] . > jg_CURSE_Map last touched track MIDI input to channel 08.lua
+--   [main] . > jg_CURSE_Map last touched track MIDI input to channel 09.lua
+--   [main] . > jg_CURSE_Map last touched track MIDI input to channel 10.lua
+--   [main] . > jg_CURSE_Map last touched track MIDI input to channel 11.lua
+--   [main] . > jg_CURSE_Map last touched track MIDI input to channel 12.lua
+--   [main] . > jg_CURSE_Map last touched track MIDI input to channel 13.lua
+--   [main] . > jg_CURSE_Map last touched track MIDI input to channel 14.lua
+--   [main] . > jg_CURSE_Map last touched track MIDI input to channel 15.lua
+--   [main] . > jg_CURSE_Map last touched track MIDI input to channel 16.lua
 
 
 
@@ -51,10 +51,10 @@ end
 
 local target_zero_based = channel - 1 -- REAPER uses 0-based channel index
 
--- Set the selected track's MIDI input mapping to the slot channel
-local track = r.GetSelectedTrack()
+-- Set the last-touched track's MIDI input mapping to the slot channel
+local track = r.GetLastTouchedTrack()
 if not track then
-  r.ShowMessageBox("No selected track found.", "jg_CURSE", 0)
+  r.ShowMessageBox("No last-touched track found.", "jg_CURSE", 0)
   return
 end
 
@@ -83,7 +83,7 @@ if replaced == 0 then
 end
 
 -- Apply change with undo
-local undo_label = string.format("Map selected tracks MIDI input to channel %d", channel)
+local undo_label = string.format("Map last-touched track MIDI input to channel %d", channel)
 r.Undo_BeginBlock()
 local setok = r.SetTrackStateChunk(track, chunk, false)
 if not setok then
