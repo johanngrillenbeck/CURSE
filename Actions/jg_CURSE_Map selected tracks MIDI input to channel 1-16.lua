@@ -1,5 +1,5 @@
 -- @description Map last touched track MIDI input to channel [1-16]
--- @version 0.1
+-- @version 0.2
 -- @author Johann Grillenbeck
 -- @about
 --   # Map last touched track MIDI input to channel [1-16]
@@ -13,7 +13,7 @@
 -- @links
 --   GitHub https://github.com/johanngrillenbeck/CURSE
 -- @changelog
---   Added script as a metapackage
+--   Reverted to use "last touched" logic
 -- @metapackage
 -- @provides
 --   [main] . > jg_CURSE_Map last touched track MIDI input to channel 01.lua
