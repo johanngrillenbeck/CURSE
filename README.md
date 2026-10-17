@@ -2,7 +2,7 @@
 
 ## User Documentation
 
-For the documentation of the project and each and every script, go to the [User Documentation]() hosted online (also available in markdown format in this repo under `Docs`).
+For the documentation of the project and each and every script, go to the [User Documentation](curse.johanngrillenbeck.de) hosted online (also available in markdown format in this repo under `Docs`).
 
 ## Development Documentation
 
