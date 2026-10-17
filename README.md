@@ -8,4 +8,8 @@ For the documentation of the project and each and every script, go to the [User 
 
 ### Environment
 
-We use a nix-shell to set up our dev environment with Ruby and some additional packages to build native extensions that some Gems require. Why Ruby? It allows us to use Jekyll to preview the documentation as it will be pushed to GitHub Pages from the `Docs` subdirectory of this repo. Coincidentally, reapack-index is also a Ruby Gem, so we kill two birds with one stone. Thanks, Cfillion! :D
+#### reapack-index
+Install ruby, cmake and pandoc. Then use `bundle install` at the repo root.
+
+#### docs via jekyll
+Install ruby. Then use `bundle install` at /Docs.
