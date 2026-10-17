@@ -2,8 +2,8 @@ title: jg_CURSE
 description: Collection of Useful Reaper Script Enhancements
 theme: just-the-docs
 
-url: ""
-baseurl: ""
+url: "https://johanngrillenbeck.github.io"
+baseurl: "/CURSE"
 
 search_enabled: true
 
