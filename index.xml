@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<index version="1" commit="6eb4e08a854df9542047f64fd37cdc32bfe4ed98" name="jg_CURSE">
+  <category name="Actions">
+    <reapack name="jg_CURSE_Batch import tracks from folders and set region.lua" type="script" desc="Batch import tracks from folders, set region to item length and name after parent folder">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 1. Batch import tracks from folders\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Choose directory that contains only folders whose contents you want to import. Choose file extension(s) of files you want to import Choose how many seconds of gap there should be between the items of each folder, if any. This script will then go into each folder and place their items at the same time position on tracks downward from the current one, generating new ones if need be, sorting items numerically or alphabetically. Note that this script intentionally only goes one level deep, not recursively into the folder tree. You can select the parent folder that contains multiple folders, only those will be checked one level deep from the parent.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 2. Set region to item length and name after parent folder\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 After importing the items of a folder, this script will create a region of the same length as the longest clip inside it and name it after the parent folder.\par}
+}
+]]></description>
+        <link rel="website" href="https://github.com/johanngrillenbeck/CURSE">GitHub</link>
+      </metadata>
+      <version name="0.1" author="Johann Grillenbeck" time="2026-10-07T18:17:27Z">
+        <changelog><![CDATA[Added script]]></changelog>
+        <source main="main">https://github.com/johanngrillenbeck/CURSE/raw/4cdc173bbb7d4a12456d375ec2b99f9a112bde24/Actions/jg_CURSE_Batch%20import%20tracks%20from%20folders%20and%20set%20region.lua</source>
+      </version>
+    </reapack>
+    <reapack name="jg_CURSE_Config.lua" type="script" desc="CURSE Configuration">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 CURSE Configuration\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 This will turn into a text or csv file someday, but for now, edit this script for the config.\par}
+}
+]]></description>
+        <link rel="website" href="https://github.com/johanngrillenbeck/CURSE">GitHub</link>
+      </metadata>
+      <version name="0.1" author="Johann Grillenbeck" time="2026-05-27T08:41:27Z">
+        <changelog><![CDATA[Added Reapack Packaging Metadata]]></changelog>
+        <source main="main">https://github.com/johanngrillenbeck/CURSE/raw/2cf6f2dc5c0786b5dccd97d222e17768143fb953/Actions/jg_CURSE_Config.lua</source>
+      </version>
+    </reapack>
+    <reapack name="jg_CURSE_FTC Smart freeze - only instruments - multichannel.lua" type="script" desc="Smart freeze (Multichannel)">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Multichannel smart freeze instruments\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 This script allows you to freeze only the Instruments in the FX Chain, keeping all other VSTs online.\par}
+}
+]]></description>
+        <link rel="website" href="https://github.com/johanngrillenbeck/CURSE">GitHub</link>
+      </metadata>
+      <version name="1.0" author="Ilias-Timon Poulakis (FeedTheCat), this multichannel version adjustment by Johann Grillenbeck" time="2026-10-17T06:34:13Z">
+        <changelog><![CDATA[Changed FTC's action ID to the multichannel one, static behaivior to render instruments.]]></changelog>
+        <source main="main">https://github.com/johanngrillenbeck/CURSE/raw/71b414f2c44989c3580af23ad3fd5766ba6ce8e2/Actions/jg_CURSE_FTC%20Smart%20freeze%20-%20only%20instruments%20-%20multichannel.lua</source>
+      </version>
+    </reapack>
+    <reapack name="jg_CURSE_Helper.lua" type="script" desc="CURSE Helper">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 CURSE Helper\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Common functions to avoid duplication across CURSE scripts. Exposes helpers for selection, channels, prompts, insertion, track ops, and routing.\par}
+}
+]]></description>
+        <link rel="website" href="https://github.com/johanngrillenbeck/CURSE">GitHub</link>
+      </metadata>
+      <version name="0.1" author="Johann Grillenbeck" time="2026-05-27T08:41:27Z">
+        <changelog><![CDATA[Added Reapack Packaging Metadata]]></changelog>
+        <source main="main">https://github.com/johanngrillenbeck/CURSE/raw/2cf6f2dc5c0786b5dccd97d222e17768143fb953/Actions/jg_CURSE_Helper.lua</source>
+      </version>
+    </reapack>
+    <reapack name="jg_CURSE_Map last touched track MIDI input to channel 1-16.lua" type="script" desc="Map last touched track MIDI input to channel [1-16]">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Map last touched track MIDI input to channel [1-16]\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Sets "Map input to channel" to MIDI Channel [1-16] on the last-touched track\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Script Logic\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Uses the track "I_RECINPUT" integer bitfield. Bits explained (from ReaScript API):\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab bit 12 (value 4096) = input is MIDI\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab low 5 bits = channel (0=all, 1..16)\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab next 6 bits = physical input index (63 = all physical inputs)\sa180\par}
+}
+]]></description>
+        <link rel="website" href="https://github.com/johanngrillenbeck/CURSE">GitHub</link>
+      </metadata>
+      <version name="0.2" author="Johann Grillenbeck" time="2026-07-19T22:09:40Z">
+        <changelog><![CDATA[Reverted to use "last touched" logic]]></changelog>
+        <source main="main" file="jg_CURSE_Map last touched track MIDI input to channel 01.lua">https://github.com/johanngrillenbeck/CURSE/raw/cd6f59d4f947668c805952007a2874869207af51/Actions/jg_CURSE_Map%20last%20touched%20track%20MIDI%20input%20to%20channel%201-16.lua</source>
+        <source main="main" file="jg_CURSE_Map last touched track MIDI input to channel 02.lua">https://github.com/johanngrillenbeck/CURSE/raw/cd6f59d4f947668c805952007a2874869207af51/Actions/jg_CURSE_Map%20last%20touched%20track%20MIDI%20input%20to%20channel%201-16.lua</source>
+        <source main="main" file="jg_CURSE_Map last touched track MIDI input to channel 03.lua">https://github.com/johanngrillenbeck/CURSE/raw/cd6f59d4f947668c805952007a2874869207af51/Actions/jg_CURSE_Map%20last%20touched%20track%20MIDI%20input%20to%20channel%201-16.lua</source>
+        <source main="main" file="jg_CURSE_Map last touched track MIDI input to channel 04.lua">https://github.com/johanngrillenbeck/CURSE/raw/cd6f59d4f947668c805952007a2874869207af51/Actions/jg_CURSE_Map%20last%20touched%20track%20MIDI%20input%20to%20channel%201-16.lua</source>
+        <source main="main" file="jg_CURSE_Map last touched track MIDI input to channel 05.lua">https://github.com/johanngrillenbeck/CURSE/raw/cd6f59d4f947668c805952007a2874869207af51/Actions/jg_CURSE_Map%20last%20touched%20track%20MIDI%20input%20to%20channel%201-16.lua</source>
+        <source main="main" file="jg_CURSE_Map last touched track MIDI input to channel 06.lua">https://github.com/johanngrillenbeck/CURSE/raw/cd6f59d4f947668c805952007a2874869207af51/Actions/jg_CURSE_Map%20last%20touched%20track%20MIDI%20input%20to%20channel%201-16.lua</source>
+        <source main="main" file="jg_CURSE_Map last touched track MIDI input to channel 07.lua">https://github.com/johanngrillenbeck/CURSE/raw/cd6f59d4f947668c805952007a2874869207af51/Actions/jg_CURSE_Map%20last%20touched%20track%20MIDI%20input%20to%20channel%201-16.lua</source>
+        <source main="main" file="jg_CURSE_Map last touched track MIDI input to channel 08.lua">https://github.com/johanngrillenbeck/CURSE/raw/cd6f59d4f947668c805952007a2874869207af51/Actions/jg_CURSE_Map%20last%20touched%20track%20MIDI%20input%20to%20channel%201-16.lua</source>
+        <source main="main" file="jg_CURSE_Map last touched track MIDI input to channel 09.lua">https://github.com/johanngrillenbeck/CURSE/raw/cd6f59d4f947668c805952007a2874869207af51/Actions/jg_CURSE_Map%20last%20touched%20track%20MIDI%20input%20to%20channel%201-16.lua</source>
+        <source main="main" file="jg_CURSE_Map last touched track MIDI input to channel 10.lua">https://github.com/johanngrillenbeck/CURSE/raw/cd6f59d4f947668c805952007a2874869207af51/Actions/jg_CURSE_Map%20last%20touched%20track%20MIDI%20input%20to%20channel%201-16.lua</source>
+        <source main="main" file="jg_CURSE_Map last touched track MIDI input to channel 11.lua">https://github.com/johanngrillenbeck/CURSE/raw/cd6f59d4f947668c805952007a2874869207af51/Actions/jg_CURSE_Map%20last%20touched%20track%20MIDI%20input%20to%20channel%201-16.lua</source>
+        <source main="main" file="jg_CURSE_Map last touched track MIDI input to channel 12.lua">https://github.com/johanngrillenbeck/CURSE/raw/cd6f59d4f947668c805952007a2874869207af51/Actions/jg_CURSE_Map%20last%20touched%20track%20MIDI%20input%20to%20channel%201-16.lua</source>
+        <source main="main" file="jg_CURSE_Map last touched track MIDI input to channel 13.lua">https://github.com/johanngrillenbeck/CURSE/raw/cd6f59d4f947668c805952007a2874869207af51/Actions/jg_CURSE_Map%20last%20touched%20track%20MIDI%20input%20to%20channel%201-16.lua</source>
+        <source main="main" file="jg_CURSE_Map last touched track MIDI input to channel 14.lua">https://github.com/johanngrillenbeck/CURSE/raw/cd6f59d4f947668c805952007a2874869207af51/Actions/jg_CURSE_Map%20last%20touched%20track%20MIDI%20input%20to%20channel%201-16.lua</source>
+        <source main="main" file="jg_CURSE_Map last touched track MIDI input to channel 15.lua">https://github.com/johanngrillenbeck/CURSE/raw/cd6f59d4f947668c805952007a2874869207af51/Actions/jg_CURSE_Map%20last%20touched%20track%20MIDI%20input%20to%20channel%201-16.lua</source>
+        <source main="main" file="jg_CURSE_Map last touched track MIDI input to channel 16.lua">https://github.com/johanngrillenbeck/CURSE/raw/cd6f59d4f947668c805952007a2874869207af51/Actions/jg_CURSE_Map%20last%20touched%20track%20MIDI%20input%20to%20channel%201-16.lua</source>
+      </version>
+    </reapack>
+    <reapack name="jg_CURSE_Map selected tracks MIDI input to OMNI - disable mapping.lua" type="script" desc="Map selected tracks MIDI input to OMNI - disable mapping">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Map selected tracks MIDI input to OMNI - disable mapping\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Disable "Map input to channel" (set to omnichannel / -1) on all selected tracks\par}
+}
+]]></description>
+        <link rel="website" href="https://github.com/johanngrillenbeck/CURSE">GitHub</link>
+      </metadata>
+      <version name="0.2" author="Johann Grillenbeck" time="2026-05-27T20:48:22Z">
+        <changelog><![CDATA[Now uses "GetSelectedTrack" instead of "LastTouchedTrack"
+Changed name to reflect behavior]]></changelog>
+        <source main="main">https://github.com/johanngrillenbeck/CURSE/raw/e648eab2152b98e7c5e81732979be9dc9ebc9881/Actions/jg_CURSE_Map%20selected%20tracks%20MIDI%20input%20to%20OMNI%20-%20disable%20mapping.lua</source>
+      </version>
+    </reapack>
+    <reapack name="jg_CURSE_Move all note events of selected MIDI items to channel 1.lua" type="script" desc="Move all note events of selected MIDI items to channel 1">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Move all note events of selected MIDI items to channel 1\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 This script moves all note events inside the selected MIDI items to channel 1.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel1 \b \fs32 Script logic\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Iterate over selected items, select all note events, move them to channel 1 (right click -> Note Channel -> 1)\par}
+}
+]]></description>
+        <link rel="website" href="https://github.com/johanngrillenbeck/CURSE">GitHub</link>
+      </metadata>
+      <version name="0.1" author="Johann Grillenbeck" time="2026-05-27T10:39:23Z">
+        <changelog><![CDATA[Added script]]></changelog>
+        <source main="main">https://github.com/johanngrillenbeck/CURSE/raw/b0b4df2ad8e193843b6918057d89cfb0c19050cb/Actions/jg_CURSE_Move%20all%20note%20events%20of%20selected%20MIDI%20items%20to%20channel%201.lua</source>
+      </version>
+    </reapack>
+    <reapack name="jg_CURSE_name-match import files as new active takes for selected items.lua" type="script" desc="Name-match import files as new active takes for selected items">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Name-match import files as new active takes for selected items\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Matches selected media items to user-picked audio files by a shared core key (cue number + instrument number, e.g. "1m03_01"), then inserts each matched audio file as a new active take on the corresponding item.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Matching logic\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Core key pattern: "%d+m%d+_%d+" (e.g. "1m03_01")\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab The key is searched inside the basename of both the item's active take source filename and each picked audio file. Project prefixes and render suffixes are ignored automatically.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Example: "1m03_01_Drums_pre-comb" matches "WOUI_1m03_01_Drums_comb"\sa180\par}
+}
+]]></description>
+        <link rel="website" href="https://github.com/johanngrillenbeck/CURSE">GitHub</link>
+      </metadata>
+      <version name="0.1" author="Johann Grillenbeck" time="2026-05-27T08:41:27Z">
+        <changelog><![CDATA[Added Reapack Packaging Metadata]]></changelog>
+        <source main="main">https://github.com/johanngrillenbeck/CURSE/raw/2cf6f2dc5c0786b5dccd97d222e17768143fb953/Actions/jg_CURSE_name-match%20import%20files%20as%20new%20active%20takes%20for%20selected%20items.lua</source>
+      </version>
+    </reapack>
+    <reapack name="jg_CURSE_Route selected tracks to new bus track.lua" type="script" desc="Route selected tracks to new bus track">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Route selected tracks to new bus track\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Creates a new Bus track and routes all currently selected tracks to it via sends.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Disables the selected tracks' Master/Parent send so audio flows through the Bus to Master.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Prompts for Bus track name\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Prompts for placement: after last selected track OR at end of project\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Prompts whether to prefix name with "B" (checkbox, default ON)\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Sets Bus track's channel count to the maximum channel count found among selected tracks\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Creates sends from each selected track to the Bus track, sending all source channels\sa180\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Notes on multichannel audio for script development\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Reaper send channel mapping: you can set source/dest channel via B_MUTE and I_SRCCHAN/I_DSTCHAN fields. For multichannel, set I_SRCCHAN = -1 to send "all channels" (Reaper uses -1 for automatic/all). Alternatively, we can set the destination track to have the appropriate number of channels and leave default mapping.\par}
+}
+]]></description>
+        <link rel="website" href="https://github.com/johanngrillenbeck/CURSE">GitHub</link>
+      </metadata>
+      <version name="0.1" author="Johann Grillenbeck" time="2026-05-27T08:41:27Z">
+        <changelog><![CDATA[Added Reapack Packaging Metadata]]></changelog>
+        <source main="main">https://github.com/johanngrillenbeck/CURSE/raw/2cf6f2dc5c0786b5dccd97d222e17768143fb953/Actions/jg_CURSE_Route%20selected%20tracks%20to%20new%20bus%20track.lua</source>
+      </version>
+    </reapack>
+    <reapack name="jg_CURSE_Route selected tracks to new send FX track.lua" type="script" desc="Route selected tracks to new bus track">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Route selected tracks to new send FX track\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Creates a new FX "bus" track and routes all currently selected tracks to it.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Prompts for FX track name\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Prompts for placement: after last selected track OR at end of project\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Prompts whether to prefix name with "FX" (checkbox, default ON)\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Sets FX track's channel count to the maximum channel count found among selected tracks\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Creates sends from each selected track to the FX track, sending all source channels\sa180\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Notes on multichannel audio for script development\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Reaper send channel mapping: you can set source/dest channel via B_MUTE and I_SRCCHAN/I_DSTCHAN fields. For multichannel, set I_SRCCHAN = -1 to send "all channels" (Reaper uses -1 for automatic/all). Alternatively, we can set the destination track to have the appropriate number of channels and leave default mapping.\par}
+}
+]]></description>
+        <link rel="website" href="https://github.com/johanngrillenbeck/CURSE">GitHub</link>
+      </metadata>
+      <version name="0.1" author="Johann Grillenbeck" time="2026-05-27T08:41:27Z">
+        <changelog><![CDATA[Added Reapack Packaging Metadata]]></changelog>
+        <source main="main">https://github.com/johanngrillenbeck/CURSE/raw/2cf6f2dc5c0786b5dccd97d222e17768143fb953/Actions/jg_CURSE_Route%20selected%20tracks%20to%20new%20send%20FX%20track.lua</source>
+      </version>
+    </reapack>
+  </category>
+</index>
