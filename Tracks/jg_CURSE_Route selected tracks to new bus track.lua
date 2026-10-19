@@ -1,5 +1,5 @@
 -- @description Route selected tracks to new bus track
--- @version 0.1
+-- @version 0.2b
 -- @author Johann Grillenbeck
 -- @about
 --   # Route selected tracks to new bus track
@@ -17,16 +17,17 @@
 -- @links
 --   GitHub https://github.com/johanngrillenbeck/CURSE
 -- @changelog
---   Added Reapack Packaging Metadata
+--   Fix Helper path resolution
 
 local r = reaper
 
--- Load helper from the same directory as this script
+-- Load the shared helper from the sibling Helpers directory.
 local function load_helper()
   local info = debug.getinfo(1, 'S')
   local script_path = info.source:match("^@(.+)$") or ""
   local dir = script_path:match("^(.*)[/\\]") or ""
-  local helper_path = dir .. "/jg_CURSE_Helper.lua"
+  local root = dir:match("^(.*)[/\\][^/\\]+$") or dir
+  local helper_path = root .. "/Helpers/jg_CURSE_Helper.lua"
   local ok, H = pcall(dofile, helper_path)
   if ok and type(H) == "table" then return H end
   reaper.ShowMessageBox("Failed to load helper at: " .. helper_path, "jg_CURSE", 0)
