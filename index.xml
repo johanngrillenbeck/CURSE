@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" commit="3e9c3ba824f98745155421fb4ebfb93720f1cf2e" name="jg_CURSE">
+<index version="1" commit="4130e229364fb1fdc0667e4fdee58e848555583a" name="jg_CURSE">
   <category name="Helpers">
     <reapack name="jg_CURSE_Config.lua" type="script" desc="CURSE Configuration">
       <metadata>
@@ -53,6 +53,10 @@
       <version name="0.1" author="Johann Grillenbeck" time="2026-10-19T12:36:10Z">
         <changelog><![CDATA[Added script]]></changelog>
         <source main="main">https://github.com/johanngrillenbeck/CURSE/raw/7a121904590facd5ab2879c33506bfd89eae714f/Import/jg_CURSE_Batch%20import%20tracks%20from%20folders%20and%20set%20region.lua</source>
+      </version>
+      <version name="0.2" author="Johann Grillenbeck" time="2026-10-19T13:03:33Z">
+        <changelog><![CDATA[fix helper path resolution]]></changelog>
+        <source main="main">https://github.com/johanngrillenbeck/CURSE/raw/4130e229364fb1fdc0667e4fdee58e848555583a/Import/jg_CURSE_Batch%20import%20tracks%20from%20folders%20and%20set%20region.lua</source>
       </version>
     </reapack>
     <reapack name="jg_CURSE_name-match import files as new active takes for selected items.lua" type="script" desc="Name-match import files as new active takes for selected items">
@@ -199,6 +203,10 @@ Changed name to reflect behavior]]></changelog>
         <changelog><![CDATA[Fix Helper path resolution]]></changelog>
         <source main="main">https://github.com/johanngrillenbeck/CURSE/raw/3e9c3ba824f98745155421fb4ebfb93720f1cf2e/Tracks/jg_CURSE_Route%20selected%20tracks%20to%20new%20bus%20track.lua</source>
       </version>
+      <version name="0.2" author="Johann Grillenbeck" time="2026-10-19T13:03:33Z">
+        <changelog><![CDATA[Fix Helper path resolution]]></changelog>
+        <source main="main">https://github.com/johanngrillenbeck/CURSE/raw/4130e229364fb1fdc0667e4fdee58e848555583a/Tracks/jg_CURSE_Route%20selected%20tracks%20to%20new%20bus%20track.lua</source>
+      </version>
     </reapack>
     <reapack name="jg_CURSE_Route selected tracks to new send FX track.lua" type="script" desc="Route selected tracks to new bus track">
       <metadata>
@@ -222,6 +230,10 @@ Changed name to reflect behavior]]></changelog>
       <version name="0.1" author="Johann Grillenbeck" time="2026-10-19T12:36:10Z">
         <changelog><![CDATA[Added Reapack Packaging Metadata]]></changelog>
         <source main="main">https://github.com/johanngrillenbeck/CURSE/raw/7a121904590facd5ab2879c33506bfd89eae714f/Tracks/jg_CURSE_Route%20selected%20tracks%20to%20new%20send%20FX%20track.lua</source>
+      </version>
+      <version name="0.2" author="Johann Grillenbeck" time="2026-10-19T13:03:33Z">
+        <changelog><![CDATA[fix helper path resolution]]></changelog>
+        <source main="main">https://github.com/johanngrillenbeck/CURSE/raw/4130e229364fb1fdc0667e4fdee58e848555583a/Tracks/jg_CURSE_Route%20selected%20tracks%20to%20new%20send%20FX%20track.lua</source>
       </version>
     </reapack>
   </category>
