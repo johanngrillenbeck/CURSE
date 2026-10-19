@@ -1,5 +1,5 @@
 -- @description Batch import tracks from folders, set region to item length and name after parent folder
--- @version 0.1
+-- @version 0.2
 -- @author Johann Grillenbeck
 -- @about
 --   This script does two things:
@@ -14,7 +14,7 @@
 -- @links
 --   GitHub https://github.com/johanngrillenbeck/CURSE
 -- @changelog
---   Added script
+--   fix helper path resolution
 
 local r = reaper
 
@@ -23,8 +23,10 @@ local r = reaper
 -------------------------------------------------------------------------------
 local function load_helper()
     local info = debug.getinfo(1, 'S')
-    local script_path = info.source:match([[^@?(.*[\/])[^\/]-$]])
-    local helper_path = script_path .. "jg_CURSE_Helper.lua"
+    local script_path = info.source:match("^@(.+)$") or ""
+    local dir = script_path:match("^(.*)[/\\]") or ""
+    local root = dir:match("^(.*)[/\\][^/\\]+$") or dir
+    local helper_path = root .. "/Helpers/jg_CURSE_Helper.lua"
     local ok, helper = pcall(dofile, helper_path)
     if ok and type(helper) == "table" then
         return helper
@@ -34,7 +36,7 @@ end
 
 local H = load_helper()
 if not H then
-    r.ShowMessageBox("Could not load jg_CURSE_Helper.lua.\nPlease ensure it is in the same directory as this script.", "CURSE Error", 0)
+    r.ShowMessageBox("Could not load jg_CURSE_Helper.lua from the Helpers directory.", "CURSE Error", 0)
     return
 end
 

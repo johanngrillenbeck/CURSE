@@ -1,5 +1,5 @@
 -- @description Route selected tracks to new bus track
--- @version 0.2b
+-- @version 0.2
 -- @author Johann Grillenbeck
 -- @about
 --   # Route selected tracks to new bus track
