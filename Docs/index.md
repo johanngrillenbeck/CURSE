@@ -1,6 +1,7 @@
 ---
 title: CURSE
 layout: home
+nav_order: 1
 ---
 
 # CURSE - Collection of Useful Reaper Script Enhancements
@@ -9,7 +10,7 @@ This is a loose collection of Reaper scripts I made to enhance my workflow.
 Every script has an entry in the menu where you can read about its functionality.
 Sometimes I might add a proposed script without implementing it directly. You can see this from the respective status table.
 
-# CURSE vs my other collections
+## CURSE vs my other collections
 
 In short, all scripts that do not belong into one of my other collections will end up here in CURSE.
 Every script in CURSE should be self contained, apart from using the config and helper scripts.

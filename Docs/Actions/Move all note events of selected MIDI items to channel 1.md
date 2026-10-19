@@ -1,7 +1,7 @@
 ---
 title: Move all note events of selected MIDI items to channel 1
 layout: default
-nav_order: 5
+nav_order: 6
 ---
 
 # Move all note events of selected MIDI items to channel 1

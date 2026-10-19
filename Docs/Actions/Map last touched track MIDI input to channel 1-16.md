@@ -1,7 +1,7 @@
 ---
 title: Map last touched track MIDI input to channel 1-16
 layout: default
-nav_order: 3
+nav_order: 4
 ---
 
 # Map last touched track MIDI input to channel [1-16]

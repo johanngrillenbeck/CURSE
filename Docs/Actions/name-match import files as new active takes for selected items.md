@@ -1,7 +1,7 @@
 ---
 title: Name-match import files as new active takes for selected items
 layout: default
-nav_order: 6
+nav_order: 7
 ---
 
 # Name-match import files as new active takes for selected items

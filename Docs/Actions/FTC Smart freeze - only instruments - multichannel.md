@@ -1,7 +1,7 @@
 ---
 title: FTC Smart freeze - only instruments - multichannel
 layout: default
-nav_order: 2
+nav_order: 3
 ---
 
 # FTC Smart freeze - only instruments - multichannel

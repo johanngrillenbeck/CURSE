@@ -1,7 +1,7 @@
 ---
 title: Batch import tracks from folders and set region
 layout: default
-nav_order: 1
+nav_order: 2
 ---
 
 # Batch import tracks from folders and set region

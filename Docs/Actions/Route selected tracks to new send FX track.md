@@ -1,7 +1,7 @@
 ---
 title: Route selected tracks to new send FX track
 layout: default
-nav_order: 8
+nav_order: 9
 ---
 
 # Route selected tracks to new send FX track
