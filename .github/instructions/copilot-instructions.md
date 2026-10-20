@@ -8,5 +8,4 @@ You can rely on Reaper's extensive API documentation to achieve the desired func
 You can also rely on the commonly used Reaper extensions, such as SWS and the ReaTeam ReaScripts.
 The use of the Reaper API can create conflicts with the integrated Lua Type checker, since the Reaper API is not fully typed. Ignore false positives from the type checker related to Reaper API calls.
 
-The ReaScript documentation can be found here: https://www.extremraym.com/cloud/reascript-doc/
-The reapack-index documentation can be found here: https://github.com/cfillion/reapack-index/wiki
+Documentation for all things Reaper and its extensions can be found in the .jg/ folder in this very repo. It is purposely not tracked by git.
