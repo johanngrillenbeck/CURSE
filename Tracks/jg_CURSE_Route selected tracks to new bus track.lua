@@ -21,7 +21,10 @@
 
 local r = reaper
 
--- Load the shared helper from the sibling Helpers directory.
+-------------------------------------------------------------------------------
+-- Helper loading
+-------------------------------------------------------------------------------
+
 local function load_helper()
   local info = debug.getinfo(1, 'S')
   local script_path = info.source:match("^@(.+)$") or ""
@@ -37,13 +40,19 @@ end
 local H = load_helper()
 if not H then return end
 
+-------------------------------------------------------------------------------
+-- Core Script
+-------------------------------------------------------------------------------
+
 local function main()
+  -- 1. Collect selected tracks
   local sel = H.get_selected_tracks()
   if #sel == 0 then
     H.msg("jg_CURSE_RouteSelectedTracksToNewBus", "No tracks selected.")
     return
   end
 
+  -- 2. Gather Bus track options
   local busName = H.prompt_name("Bus Track Name", "Enter Bus track name:", "")
   if not busName then return end
   local placement = H.prompt_placement(1)
@@ -54,6 +63,7 @@ local function main()
   local finalName = usePrefix and ("B " .. busName) or busName
   local maxCh = H.get_max_channels(sel)
 
+  -- 3. Create and configure the Bus track
   r.Undo_BeginBlock()
   r.PreventUIRefresh(1)
 
@@ -70,6 +80,7 @@ local function main()
   H.set_track_channels(busTrack, maxCh)
   H.apply_default_color(busTrack, "Bus")
 
+  -- 4. Route selected tracks through the Bus
   for i = 1, #sel do
     local t = sel[i]
     local ch = reaper.GetMediaTrackInfo_Value(t, "I_NCHAN")

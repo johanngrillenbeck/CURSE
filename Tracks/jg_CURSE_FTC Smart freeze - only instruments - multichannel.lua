@@ -10,16 +10,27 @@
 -- @changelog
 --   Changed FTC's action ID to the multichannel one, static behaivior to render instruments.
 
+-------------------------------------------------------------------------------
+-- Dependency check
+-------------------------------------------------------------------------------
+
 if not reaper.SNM_GetIntConfigVar then
     reaper.MB('Please install SWS extension', 'Error', 0)
     return
 end
 
--- Local script settings.
+-------------------------------------------------------------------------------
+-- Local settings
+-------------------------------------------------------------------------------
+
 local is_unlock = true
 local render_tail = 2000 -- milliseconds
 -- Add FX name fragments here when they must render in realtime.
 local realtime_fx_names = {}
+
+-------------------------------------------------------------------------------
+-- Instrument lookup
+-------------------------------------------------------------------------------
 
 function GetLastInstrument(track)
     local instr_fx = reaper.TrackFX_GetInstrument(track)
@@ -29,6 +40,10 @@ function GetLastInstrument(track)
     end
     return instr_fx
 end
+
+-------------------------------------------------------------------------------
+-- Collect selected tracks, FX, and item bounds
+-------------------------------------------------------------------------------
 
 reaper.Undo_BeginBlock()
 reaper.PreventUIRefresh(1)
@@ -52,7 +67,7 @@ for t = 0, sel_track_cnt - 1 do
     local instr_fx = GetLastInstrument(track)
 
     if instr_fx >= 0 then
-        -- Inspect the complete FX chain before moving post-instrument FX aside.
+        -- Detect any enabled FX that requires realtime rendering.
         for fx = 0, fx_cnt - 1 do
             if reaper.TrackFX_GetEnabled(track, fx) then
                 local _, fx_name = reaper.TrackFX_GetFXName(track, fx, '')
@@ -78,7 +93,7 @@ for t = 0, sel_track_cnt - 1 do
     end
 
     if freeze_up_to_fx then
-        -- Add track at end of track list
+        -- Preserve post-instrument FX on a temporary hidden track.
         local track_cnt = reaper.CountTracks()
         reaper.InsertTrackAtIndex(track_cnt, false)
         local fx_track = reaper.GetTrack(0, track_cnt)
@@ -86,10 +101,10 @@ for t = 0, sel_track_cnt - 1 do
         fx_backup_tracks = fx_backup_tracks or {}
         fx_backup_tracks[track] = fx_track
 
-        -- Hide track in tcp and mixer
+        -- Keep the temporary FX track out of the TCP and mixer.
         reaper.SetMediaTrackInfo_Value(fx_track, 'B_SHOWINMIXER', 0)
         reaper.SetMediaTrackInfo_Value(fx_track, 'B_SHOWINTCP', 0)
-        -- Move FX to hidden fx track
+        -- Move FX after the last instrument onto the temporary track.
         for i = fx_cnt, freeze_up_to_fx + 1, -1 do
             reaper.TrackFX_CopyToTrack(track, i, fx_track, 0, true)
         end
@@ -111,21 +126,27 @@ for t = 0, sel_track_cnt - 1 do
 
 end
 
+-------------------------------------------------------------------------------
+-- Configure freeze render options
+-------------------------------------------------------------------------------
+
 local prev_render_tail = reaper.SNM_GetIntConfigVar('rendertail', 0)
 local prev_work_render = reaper.SNM_GetIntConfigVar('workrender', 0)
 
--- Set render tail length from the local script setting.
 reaper.SNM_SetIntConfigVar('rendertail', render_tail)
 
 local work_render = prev_work_render
 local is_include_tail = prev_work_render & 64 == 64
--- Uncheck option to "Include tail when freezing entire tracks"
+-- Disable "Include tail when freezing entire tracks" for this operation.
 if is_include_tail then work_render = work_render - 64 end
--- Limit render speed to realtime
+-- Limit render speed to realtime when a configured FX requires it.
 if is_realtime then work_render = work_render | 8 end
 reaper.SNM_SetIntConfigVar('workrender', work_render)
 
--- Track: Freeze to multichannel (!) (render pre-fader, save/remove items and online FX)
+-------------------------------------------------------------------------------
+-- Freeze tracks that contain instruments
+-------------------------------------------------------------------------------
+
 for _, track in ipairs(tracks_without_instrument) do
     reaper.SetTrackSelected(track, false)
 end
@@ -137,14 +158,17 @@ for _, track in ipairs(selected_tracks) do
     reaper.SetTrackSelected(track, true)
 end
 
--- Restore settings
+-------------------------------------------------------------------------------
+-- Restore render settings and temporary FX
+-------------------------------------------------------------------------------
+
 reaper.SNM_SetIntConfigVar('rendertail', prev_render_tail)
 reaper.SNM_SetIntConfigVar('workrender', prev_work_render)
 
 if fx_backup_tracks then
     for freeze_track, fx_track in pairs(fx_backup_tracks) do
         local fx_cnt = reaper.TrackFX_GetCount(fx_track)
-        -- Move back FX from hidden fx track
+        -- Return the preserved FX to its original track.
         for i = 0, fx_cnt - 1 do
             reaper.TrackFX_CopyToTrack(fx_track, 0, freeze_track, fx_cnt + i, 1)
         end
@@ -152,14 +176,18 @@ if fx_backup_tracks then
     end
 end
 
+-------------------------------------------------------------------------------
+-- Restore item lengths and lock state
+-------------------------------------------------------------------------------
+
 for _, track in ipairs(selected_tracks) do
     for i = 0, reaper.CountTrackMediaItems(track) - 1 do
         local item = reaper.GetTrackMediaItem(track, i)
         local _, guid = reaper.GetSetMediaItemInfo_String(item, 'GUID', '', 0)
 
-        -- Check item item existed before freeze (e.g. user cancelled process)
+        -- Process only items created by the freeze operation.
         if not item_guids[guid] then
-            -- Unlock item after freezing
+            -- Unlock newly rendered items when configured.
             if is_unlock then
                 reaper.SetMediaItemInfo_Value(item, 'C_LOCK', 0)
             end
@@ -181,7 +209,7 @@ for _, track in ipairs(selected_tracks) do
             end
 
             if is_item_extended then
-                -- Restore pre-freeze item length (remove tail)
+                -- Remove the render tail from extended items.
                 local length_without_tail = length - render_tail / 1000
                 reaper.SetMediaItemLength(item, length_without_tail, true)
             end
@@ -189,6 +217,10 @@ for _, track in ipairs(selected_tracks) do
         end
     end
 end
+
+-------------------------------------------------------------------------------
+-- Finalize project update
+-------------------------------------------------------------------------------
 
 reaper.PreventUIRefresh(-1)
 reaper.Undo_EndBlock('Smart-freeze tracks', -1)

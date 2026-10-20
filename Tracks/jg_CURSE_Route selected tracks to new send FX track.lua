@@ -20,7 +20,10 @@
 
 local r = reaper
 
--- Load the shared helper from the sibling Helpers directory.
+-------------------------------------------------------------------------------
+-- Helper loading
+-------------------------------------------------------------------------------
+
 local function load_helper()
   local info = debug.getinfo(1, 'S')
   local script_path = info.source:match("^@(.+)$") or ""
@@ -36,15 +39,19 @@ end
 local H = load_helper()
 if not H then return end
 
--- Main
+-------------------------------------------------------------------------------
+-- Core Script
+-------------------------------------------------------------------------------
+
 local function main()
+  -- 1. Collect selected tracks
   local sel = H.get_selected_tracks()
   if #sel == 0 then
     H.msg("jg_CURSE_RouteSelectedTracksToNewSendFx", "No tracks selected.")
     return
   end
 
-  -- Prompts
+  -- 2. Gather FX track options
   local fxName = H.prompt_name("FX Track Name", "Enter FX track name:", "")
   if not fxName then return end
   local placement = H.prompt_placement(1)
@@ -54,10 +61,10 @@ local function main()
 
   local finalName = usePrefix and ("FX " .. fxName) or fxName
 
-  -- Determine max channels
+  -- 3. Determine the required channel count
   local maxCh = H.get_max_channels(sel)
 
-  -- Insert track
+  -- 4. Create and configure the FX track
   r.Undo_BeginBlock()
   r.PreventUIRefresh(1)
 
@@ -74,7 +81,7 @@ local function main()
   H.set_track_channels(fxTrack, maxCh)
   H.apply_default_color(fxTrack, "FX")
 
-  -- Route selected tracks to FX track
+  -- 5. Route each selected track to the FX track
   for i = 1, #sel do
     local t = sel[i]
     local ch = reaper.GetMediaTrackInfo_Value(t, "I_NCHAN")

@@ -15,12 +15,20 @@ local r = reaper
 
 r.Undo_BeginBlock()
 
+-------------------------------------------------------------------------------
+-- Selection check
+-------------------------------------------------------------------------------
+
 local item_count = r.CountSelectedMediaItems(0)
 
 if item_count == 0 then
   r.ShowMessageBox("No items selected.", "Move Notes to Channel 1", 0)
   return
 end
+
+-------------------------------------------------------------------------------
+-- Move MIDI notes to channel 1
+-------------------------------------------------------------------------------
 
 local notes_moved = 0
 
@@ -49,6 +57,10 @@ for i = 0, item_count - 1 do
     r.MIDI_Sort(take)
   end
 end
+
+-------------------------------------------------------------------------------
+-- Finalize project update
+-------------------------------------------------------------------------------
 
 r.Undo_EndBlock("Move all note events of selected MIDI items to channel 1", -1)
 

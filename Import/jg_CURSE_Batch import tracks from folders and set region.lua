@@ -21,6 +21,7 @@ local r = reaper
 -------------------------------------------------------------------------------
 -- Helper loading
 -------------------------------------------------------------------------------
+
 local function load_helper()
     local info = debug.getinfo(1, 'S')
     local script_path = info.source:match("^@(.+)$") or ""
@@ -43,6 +44,7 @@ end
 -------------------------------------------------------------------------------
 -- Dependency check
 -------------------------------------------------------------------------------
+
 if not r.JS_Dialog_BrowseForFolder then
     r.ShowMessageBox(
         "This script requires the 'js_ReaScriptAPI' extension to select folders.\n\n" ..
@@ -55,6 +57,7 @@ end
 -------------------------------------------------------------------------------
 -- Natural / Alphanumeric sorting
 -------------------------------------------------------------------------------
+
 -- Splits a string into chunks of letters and numbers for natural sorting
 -- (e.g., "track_2" comes before "track_10")
 local function natural_sort_key(str)
@@ -93,6 +96,7 @@ end
 -------------------------------------------------------------------------------
 -- Path and file utilities
 -------------------------------------------------------------------------------
+
 local function get_file_extension(path)
     return path:match("%.([^%.\\/]+)$")
 end
@@ -105,6 +109,7 @@ end
 -------------------------------------------------------------------------------
 -- Enumerate subdirectories and files
 -------------------------------------------------------------------------------
+
 local function get_subdirectories(parent_dir)
     local subdirs = {}
     local idx = 0
@@ -138,6 +143,7 @@ end
 -------------------------------------------------------------------------------
 -- Track management (visible in TCP)
 -------------------------------------------------------------------------------
+
 -- Collects visible TCP tracks starting at selected track downwards
 -- Also handles dynamically inserting new visible tracks if more tracks are needed
 local function create_track_manager(start_track)
@@ -173,8 +179,9 @@ local function create_track_manager(start_track)
 end
 
 -------------------------------------------------------------------------------
--- Main function
+-- Core Script
 -------------------------------------------------------------------------------
+
 local function main()
     -- 1. Ensure a starting track is selected
     local start_track = r.GetSelectedTrack(0, 0)

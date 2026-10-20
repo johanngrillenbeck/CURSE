@@ -14,6 +14,10 @@ local r = reaper
 
 local H = {}
 
+-------------------------------------------------------------------------------
+-- Messages and track selection
+-------------------------------------------------------------------------------
+
 function H.msg(title, text)
   r.ShowMessageBox(text, title or "jg_CURSE", 0)
 end
@@ -36,14 +40,18 @@ function H.get_max_channels(tracks)
   return maxch
 end
 
--- Generic name prompt
+-------------------------------------------------------------------------------
+-- User prompts
+-------------------------------------------------------------------------------
+
+-- Ask for a track name
 function H.prompt_name(title, label, default)
   local ok, ret = r.GetUserInputs(title or "Track Name", 1, (label or "Enter track name:"), default or "")
   if not ok or ret == "" then return nil end
   return ret
 end
 
--- Placement: 1=after last selected, 2=end of project
+-- Choose placement: 1=after last selected, 2=end of project
 function H.prompt_placement(default)
   local ok, ret = r.GetUserInputs("Placement", 1, "1=After last selected, 2=End:", tostring(default or 1))
   if not ok then return nil end
@@ -52,7 +60,7 @@ function H.prompt_placement(default)
   return ret
 end
 
--- Prefix checkbox: returns boolean
+-- Ask whether to add a name prefix
 function H.prompt_prefix(title, label, defaultChecked)
   local default = defaultChecked and "1" or "0"
   local ok, ret = r.GetUserInputs(title or "Use Prefix?", 1, (label or "Check=1, Uncheck=0:"), default)
@@ -60,6 +68,10 @@ function H.prompt_prefix(title, label, defaultChecked)
   if ret ~= "0" and ret ~= "1" then return nil end
   return ret == "1"
 end
+
+-------------------------------------------------------------------------------
+-- Track creation and configuration
+-------------------------------------------------------------------------------
 
 function H.get_insert_index(tracks, placementChoice)
   local total = r.CountTracks(0)
@@ -91,6 +103,10 @@ function H.set_track_channels(track, nchan)
   r.SetMediaTrackInfo_Value(track, "I_NCHAN", nchan)
 end
 
+-------------------------------------------------------------------------------
+-- Track routing
+-------------------------------------------------------------------------------
+
 function H.create_send_all_channels(src, dst)
   local sendIdx = r.CreateTrackSend(src, dst)
   if sendIdx >= 0 then
@@ -105,7 +121,7 @@ function H.disable_master_send(track)
   r.SetMediaTrackInfo_Value(track, "B_MAINSEND", 0)
 end
 
--- Create sends covering all channel pairs (1/2, 3/4, ...) up to numChannels
+-- Create sends covering channel pairs (1/2, 3/4, ...) up to numChannels
 function H.create_multichannel_sends(src, dst, numChannels)
   local pairs = math.max(1, math.floor(numChannels / 2))
   for i = 0, pairs - 1 do
@@ -119,7 +135,10 @@ function H.create_multichannel_sends(src, dst, numChannels)
   end
 end
 
--- Config loading and color helpers
+-------------------------------------------------------------------------------
+-- Configuration and track colors
+-------------------------------------------------------------------------------
+
 function H.load_config()
   local info = debug.getinfo(1, 'S')
   local helper_path = info.source:match("^@(.+)$") or ""
@@ -145,7 +164,7 @@ function H.set_track_color_hex(track, hex)
   local r_, g_, b_ = hex_to_rgb(hex)
   if not r_ then return false end
   local native = r.ColorToNative(r_, g_, b_)
-  -- Mark as custom color with 0x1000000 flag
+  -- Mark the color as custom with REAPER's 0x1000000 flag.
   r.SetTrackColor(track, native | 0x1000000)
   return true
 end
@@ -155,6 +174,10 @@ function H.apply_default_color(track, kind)
   local hex = cfg and cfg.colors and cfg.colors[kind]
   if hex then H.set_track_color_hex(track, hex) end
 end
+
+-------------------------------------------------------------------------------
+-- FX lookup and parameter helpers
+-------------------------------------------------------------------------------
 
 -- Find a track by exact name (case-sensitive)
 function H.find_track_by_exact_name(name)

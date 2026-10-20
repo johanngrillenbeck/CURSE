@@ -19,7 +19,9 @@
 
 local r = reaper
 
--- ─── Helpers ─────────────────────────────────────────────────────────────────
+-------------------------------------------------------------------------------
+-- Helper functions
+-------------------------------------------------------------------------------
 
 -- Strip directory and extension, return bare basename
 local function basename_no_ext(path)
@@ -57,7 +59,9 @@ local function parse_file_list(raw)
     return files
 end
 
--- ─── Guards ───────────────────────────────────────────────────────────────────
+-------------------------------------------------------------------------------
+-- Guards
+-------------------------------------------------------------------------------
 
 if not r.JS_Dialog_BrowseForOpenFiles then
     r.ShowMessageBox(
@@ -74,8 +78,11 @@ if item_count == 0 then
     return
 end
 
--- ─── Step 1: Collect selected items and their core keys ──────────────────────
+-------------------------------------------------------------------------------
+-- Core Script
+-------------------------------------------------------------------------------
 
+-- Step 1: Collect selected items and their core keys
 local items       = {}  -- { item, key, display_name }
 local skipped     = 0
 
@@ -110,8 +117,7 @@ if #items == 0 then
     return
 end
 
--- ─── Step 2: Multi-file picker ────────────────────────────────────────────────
-
+-- Step 2: Multi-file picker
 local ok, raw = r.JS_Dialog_BrowseForOpenFiles(
     "Select Rendered Audio Files to Add as Takes",
     "", "",
@@ -130,8 +136,7 @@ if #picked_files == 0 then
     return
 end
 
--- ─── Step 3: Build key → file list map ───────────────────────────────────────
-
+-- Step 3: Build key → file list map
 local file_map = {}  -- key (string) → list of full paths
 
 for _, fpath in ipairs(picked_files) do
@@ -142,8 +147,7 @@ for _, fpath in ipairs(picked_files) do
     end
 end
 
--- ─── Step 4: Match and insert takes ──────────────────────────────────────────
-
+-- Step 4: Match and insert takes
 r.Undo_BeginBlock()
 
 local matched  = 0
@@ -186,8 +190,7 @@ end
 r.Undo_EndBlock("jg_CURSE – Add Rendered Files as Takes", -1)
 r.UpdateArrange()
 
--- ─── Step 5: Summary ─────────────────────────────────────────────────────────
-
+-- Step 5: Summary
 local lines = { matched .. " item(s) successfully updated." }
 
 if skipped > 0 then

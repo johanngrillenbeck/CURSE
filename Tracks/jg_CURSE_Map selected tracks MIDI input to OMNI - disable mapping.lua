@@ -12,19 +12,28 @@
 
 local r = reaper
 
+-------------------------------------------------------------------------------
+-- Selection check
+-------------------------------------------------------------------------------
+
 local track_count = r.CountSelectedTracks(0)
 if track_count == 0 then
   r.ShowMessageBox("No selected tracks found.", "jg_CURSE", 0)
   return
 end
 
-local target_zero_based = -1 -- omnichannel -> -1
+-------------------------------------------------------------------------------
+-- MIDI input channel mapping
+-------------------------------------------------------------------------------
+
+local target_zero_based = -1 -- -1 disables channel mapping (omnichannel)
 
 r.Undo_BeginBlock()
 
 for i = 0, track_count - 1 do
   local track = r.GetSelectedTrack(0, i)
 
+  -- Read the track state and replace or add its channel-map setting
   local ok, chunk = r.GetTrackStateChunk(track, "", false)
   if ok and chunk then
     local replaced
@@ -44,6 +53,10 @@ for i = 0, track_count - 1 do
     r.SetTrackStateChunk(track, chunk, false)
   end
 end
+
+-------------------------------------------------------------------------------
+-- Finalize project update
+-------------------------------------------------------------------------------
 
 r.TrackList_AdjustWindows(false)
 r.UpdateArrange()

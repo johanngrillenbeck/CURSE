@@ -9,6 +9,10 @@
 -- @changelog
 --   Added Reapack Packaging Metadata
 
+-------------------------------------------------------------------------------
+-- Track color settings
+-------------------------------------------------------------------------------
+
 local Config = {
   colors = {
     FX = "faf06b",   -- FX track color (hex RGB)
