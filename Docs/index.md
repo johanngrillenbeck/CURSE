@@ -16,3 +16,10 @@ In short, all scripts that do not belong into one of my other collections will e
 Every script in CURSE should be self contained, apart from using the config and helper scripts.
 My other collections are bigger "workflow packages", where you have to adhere to certain project standards to make use of them.
 This is not the case here. You can pick and choose which script you like and install just that (together with jg_CURSE_helper and jg_CURSE_config).
+
+## State of the project
+
+Some of the scripts in CURSE I use daily, some I have only made for a specific one-off usecase and did not test them any further.
+Some are ... kind of abandoned.
+
+Feel free to get inspired for your own scripts or leave me feedback about where I should maybe dive a bit deeper.
